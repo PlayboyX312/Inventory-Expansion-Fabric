@@ -2,6 +2,9 @@ accessWidener	v2	named
 
 # COMMON
 
+# Allow checking data when setting sack use on tracked data set
+accessible field net/minecraft/entity/LivingEntity LIVING_FLAGS Lnet/minecraft/entity/data/TrackedData;
+
 # Allow ItemPredicate to be extended
 extendable class net/minecraft/predicate/item/ItemPredicate
 

@@ -4,6 +4,7 @@ import derekahedron.invexp.entity.player.PlayerEntityDuck;
 import derekahedron.invexp.sack.SackUsage;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
@@ -80,6 +81,40 @@ public class LivingEntityMixin {
 	private void afterTickActiveItemStack(@NotNull CallbackInfo ci) {
 		LivingEntity self = (LivingEntity) (Object) this;
 		if (self instanceof PlayerEntity player) {
+			((PlayerEntityDuck) player).invexp$stopUsingSack();
+		}
+	}
+
+	/**
+	 * Start player using sack before setting tracked data.
+	 */
+	@Inject(
+			method = "onTrackedDataSet",
+			at = @At("HEAD")
+	)
+	private void beforeTrackedDataSet(TrackedData<?> data, @NotNull CallbackInfo ci) {
+		LivingEntity self = (LivingEntity) (Object) this;
+		if (self instanceof PlayerEntity player &&
+				player.getWorld().isClient() &&
+				LivingEntity.LIVING_FLAGS.equals(data)
+		) {
+			((PlayerEntityDuck) player).invexp$startUsingSack();
+		}
+	}
+
+	/**
+	 * Stop player using sack after setting tracked data.
+	 */
+	@Inject(
+			method = "onTrackedDataSet",
+			at = @At("RETURN")
+	)
+	private void afterTrackedDataSet(TrackedData<?> data, @NotNull CallbackInfo ci) {
+		LivingEntity self = (LivingEntity) (Object) this;
+		if (self instanceof PlayerEntity player &&
+				player.getWorld().isClient() &&
+				LivingEntity.LIVING_FLAGS.equals(data)
+		) {
 			((PlayerEntityDuck) player).invexp$stopUsingSack();
 		}
 	}
