@@ -1,0 +1,59 @@
+accessWidener	v2	named
+
+# COMMON
+
+# Allow ItemPredicate to be extended
+extendable class net/minecraft/predicate/item/ItemPredicate
+
+# Get held item for scaffolding context
+accessible field net/minecraft/block/EntityShapeContext heldItem Lnet/minecraft/item/ItemStack;
+
+# Send map packets inside sack
+accessible method net/minecraft/server/network/ServerPlayerEntity sendMapPacket (Lnet/minecraft/item/ItemStack;)V
+
+# Access shooter of firework rocket
+accessible field net/minecraft/entity/projectile/FireworkRocketEntity shooter Lnet/minecraft/entity/LivingEntity;
+
+# Allow sacks to be used on a cauldron with default behavior
+accessible method net/minecraft/block/cauldron/CauldronBehavior cleanArmor (Lnet/minecraft/block/BlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/util/Hand;Lnet/minecraft/item/ItemStack;)Lnet/minecraft/util/ActionResult;
+
+# Allow extending ItemStack into QuiveredItemStack
+extendable class net/minecraft/item/ItemStack
+accessible method net/minecraft/item/ItemStack <init> (Lnet/minecraft/item/ItemConvertible;ILnet/minecraft/component/MergedComponentMap;)V
+
+# Allow dispensing Sacks and Quivers
+extendable method net/minecraft/block/dispenser/ItemDispenserBehavior dispense (Lnet/minecraft/util/math/BlockPointer;Lnet/minecraft/item/ItemStack;)Lnet/minecraft/item/ItemStack;
+accessible method net/minecraft/block/dispenser/ItemDispenserBehavior addStackOrSpawn (Lnet/minecraft/util/math/BlockPointer;Lnet/minecraft/item/ItemStack;)V
+accessible method net/minecraft/block/entity/DispenserBlockEntity getHeldStacks ()Lnet/minecraft/util/collection/DefaultedList;
+
+# CLIENT
+
+# Allow getting the held item stack used by the player
+accessible field net/minecraft/client/render/item/HeldItemRenderer client Lnet/minecraft/client/MinecraftClient;
+
+# Allow the HUD to display the selected items in sacks when held
+accessible field net/minecraft/client/gui/hud/InGameHud client Lnet/minecraft/client/MinecraftClient;
+
+# Check if connection is local
+accessible field net/minecraft/client/network/ClientCommonNetworkHandler connection Lnet/minecraft/network/ClientConnection;
+
+# Allow extending bundle tooltip
+accessible field net/minecraft/client/gui/tooltip/BundleTooltipComponent bundleContents Lnet/minecraft/component/type/BundleContentsComponent;
+accessible method net/minecraft/client/gui/tooltip/BundleTooltipComponent getProgressBarFillTexture ()Lnet/minecraft/util/Identifier;
+accessible field net/minecraft/client/gui/tooltip/BundleTooltipComponent BUNDLE_PROGRESS_BAR_BORDER_TEXTURE Lnet/minecraft/util/Identifier;
+accessible field net/minecraft/client/gui/tooltip/BundleTooltipComponent BUNDLE_SLOT_BACKGROUND_TEXTURE Lnet/minecraft/util/Identifier;
+accessible field net/minecraft/client/gui/tooltip/BundleTooltipComponent BUNDLE_SLOT_HIGHLIGHT_BACK_TEXTURE Lnet/minecraft/util/Identifier;
+accessible field net/minecraft/client/gui/tooltip/BundleTooltipComponent BUNDLE_SLOT_HIGHLIGHT_FRONT_TEXTURE Lnet/minecraft/util/Identifier;
+accessible method net/minecraft/client/gui/tooltip/BundleTooltipComponent getProgressBarLabel ()Lnet/minecraft/text/Text;
+
+# Allow dragging of Sack, Quiver, and Bundle items in the GUI
+accessible field net/minecraft/client/gui/screen/Screen client Lnet/minecraft/client/MinecraftClient;
+accessible method net/minecraft/client/gui/screen/ingame/HandledScreen addTooltipSubmenuHandler (Lnet/minecraft/client/gui/tooltip/TooltipSubmenuHandler;)V
+accessible field net/minecraft/client/gui/screen/ingame/HandledScreen focusedSlot Lnet/minecraft/screen/slot/Slot;
+accessible field net/minecraft/client/gui/screen/ingame/HandledScreen touchDragSlotStart Lnet/minecraft/screen/slot/Slot;
+accessible field net/minecraft/client/gui/screen/ingame/HandledScreen cursorDragging Z
+accessible field net/minecraft/client/gui/screen/ingame/HandledScreen heldButtonType I
+accessible field net/minecraft/client/gui/screen/ingame/HandledScreen cursorDragSlots Ljava/util/Set;
+accessible field net/minecraft/client/option/GameOptions touchscreen Lnet/minecraft/client/option/SimpleOption;
+accessible method net/minecraft/client/gui/screen/ingame/HandledScreen getSlotAt (DD)Lnet/minecraft/screen/slot/Slot;
+accessible method net/minecraft/client/gui/screen/ingame/HandledScreen onMouseClick (Lnet/minecraft/screen/slot/Slot;IILnet/minecraft/screen/slot/SlotActionType;)V

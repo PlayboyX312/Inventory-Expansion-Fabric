@@ -1,0 +1,42 @@
+{
+	"schemaVersion": 1,
+	"id": "invexp",
+	"version": "${version}",
+	"name": "Inventory Expansion",
+	"description": "This mod adds items that improve Minecraft's vanilla inventory management.",
+	"authors": [
+		"Derekahedron"
+	],
+	"contact": {
+		"homepage": "https://github.com/Derekahedron/Inventory-Expansion-Fabric",
+		"issues": "https://github.com/Derekahedron/Inventory-Expansion-Fabric/issues",
+		"sources": "https://github.com/Derekahedron/Inventory-Expansion-Fabric"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/invexp/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"derekahedron.invexp.InventoryExpansion"
+		],
+		"client": [
+			"derekahedron.invexp.InventoryExpansionClient"
+		]
+	},
+	"mixins": [
+		"invexp.mixins.json",
+		{
+			"config": "invexp.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.16.9",
+		"minecraft": "~1.21.4",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

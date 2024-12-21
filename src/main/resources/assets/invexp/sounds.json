@@ -1,0 +1,142 @@
+{
+  "item.quiver.insert": {
+    "sounds": [
+      "minecraft:item/bundle/insert1",
+      {
+        "name": "minecraft:item/bundle/insert1",
+        "pitch": 0.95
+      },
+      {
+        "name": "minecraft:item/bundle/insert1",
+        "pitch": 1.05
+      },
+      "minecraft:item/bundle/insert2",
+      {
+        "name": "minecraft:item/bundle/insert2",
+        "pitch": 0.95
+      },
+      {
+        "name": "minecraft:item/bundle/insert2",
+        "pitch": 1.05
+      },
+      "minecraft:item/bundle/insert3",
+      {
+        "name": "minecraft:item/bundle/insert3",
+        "pitch": 0.95
+      },
+      {
+        "name": "minecraft:item/bundle/insert3",
+        "pitch": 1.05
+      }
+    ],
+    "subtitle": "subtitles.invexp.item.quiver.insert"
+  },
+  "item.quiver.insert_fail": {
+    "sounds": [
+      "minecraft:item/bundle/insert_fail"
+    ],
+    "subtitle": "subtitles.invexp.item.quiver.insert_fail"
+  },
+  "item.quiver.remove_one": {
+    "sounds": [
+      "minecraft:item/bundle/remove_one1",
+      {
+        "name": "minecraft:item/bundle/remove_one1",
+        "pitch": 1.05
+      },
+      {
+        "name": "minecraft:item/bundle/remove_one1",
+        "pitch": 1.1
+      },
+      "minecraft:item/bundle/remove_one2",
+      {
+        "name": "minecraft:item/bundle/remove_one2",
+        "pitch": 1.05
+      },
+      {
+        "name": "minecraft:item/bundle/remove_one2",
+        "pitch": 1.1
+      },
+      "minecraft:item/bundle/remove_one3",
+      {
+        "name": "minecraft:item/bundle/remove_one3",
+        "pitch": 1.05
+      },
+      {
+        "name": "minecraft:item/bundle/remove_one3",
+        "pitch": 1.1
+      }
+    ],
+    "subtitle": "subtitles.invexp.item.quiver.remove_one"
+  },
+  "item.sack.insert": {
+    "sounds": [
+      "minecraft:item/bundle/insert1",
+      {
+        "name": "minecraft:item/bundle/insert1",
+        "pitch": 0.95
+      },
+      {
+        "name": "minecraft:item/bundle/insert1",
+        "pitch": 1.05
+      },
+      "minecraft:item/bundle/insert2",
+      {
+        "name": "minecraft:item/bundle/insert2",
+        "pitch": 0.95
+      },
+      {
+        "name": "minecraft:item/bundle/insert2",
+        "pitch": 1.05
+      },
+      "minecraft:item/bundle/insert3",
+      {
+        "name": "minecraft:item/bundle/insert3",
+        "pitch": 0.95
+      },
+      {
+        "name": "minecraft:item/bundle/insert3",
+        "pitch": 1.05
+      }
+    ],
+    "subtitle": "subtitles.invexp.item.sack.insert"
+  },
+  "item.sack.insert_fail": {
+    "sounds": [
+      "minecraft:item/bundle/insert_fail"
+    ],
+    "subtitle": "subtitles.invexp.item.sack.insert_fail"
+  },
+  "item.sack.remove_one": {
+    "sounds": [
+      "minecraft:item/bundle/remove_one1",
+      {
+        "name": "minecraft:item/bundle/remove_one1",
+        "pitch": 1.05
+      },
+      {
+        "name": "minecraft:item/bundle/remove_one1",
+        "pitch": 1.1
+      },
+      "minecraft:item/bundle/remove_one2",
+      {
+        "name": "minecraft:item/bundle/remove_one2",
+        "pitch": 1.05
+      },
+      {
+        "name": "minecraft:item/bundle/remove_one2",
+        "pitch": 1.1
+      },
+      "minecraft:item/bundle/remove_one3",
+      {
+        "name": "minecraft:item/bundle/remove_one3",
+        "pitch": 1.05
+      },
+      {
+        "name": "minecraft:item/bundle/remove_one3",
+        "pitch": 1.1
+      }
+    ],
+    "subtitle": "subtitles.invexp.item.sack.remove_one"
+  }
+}

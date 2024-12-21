@@ -1,0 +1,32 @@
+{
+	"required": true,
+	"package": "derekahedron.invexp.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"mixins": [
+		"BundleItemMixin",
+		"DispenserBlockMixin",
+		"FilledMapItemMixin",
+		"FireworkRocketEntityMixin",
+		"FishingBobberEntityMixin",
+		"InventoryChangedCriterionConditionsMixin",
+		"ItemFrameEntityMixin",
+		"ItemUsageMixin",
+		"LivingEntityMixin",
+		"MapStateMixin",
+		"MinecraftServerMixin",
+		"PlayerEntityMixin",
+		"PlayerInventoryMixin",
+		"RangedWeaponItemMixin",
+		"ScaffoldingBlockMixin",
+		"ScreenHandlerMixin",
+		"ServerPlayerEntityMixin",
+		"ServerPlayerInteractionManagerMixin",
+		"ServerPlayNetworkHandlerMixin",
+		"ShulkerBoxBlockEntityMixin",
+		"ShulkerBoxSlotMixin",
+		"TemptGoalMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

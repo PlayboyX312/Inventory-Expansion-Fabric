@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "invexp:item/sack",
+    "layer1": "invexp:item/sack_overlay"
+  }
+}

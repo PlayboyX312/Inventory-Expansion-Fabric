@@ -1,0 +1,109 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "cases": [
+      {
+        "model": {
+          "type": "minecraft:condition",
+          "on_false": {
+            "type": "minecraft:model",
+            "model": "invexp:item/sack",
+            "tints": [
+              {
+                "type": "minecraft:dye",
+                "default": -6265536
+              }
+            ]
+          },
+          "on_true": {
+            "type": "invexp:sack/selected_item"
+          },
+          "property": "invexp:sack/using_selected_item"
+        },
+        "when": [
+          "thirdperson_lefthand",
+          "thirdperson_righthand"
+        ]
+      },
+      {
+        "model": {
+          "type": "minecraft:condition",
+          "on_false": {
+            "type": "minecraft:model",
+            "model": "invexp:item/sack",
+            "tints": [
+              {
+                "type": "minecraft:dye",
+                "default": -6265536
+              }
+            ]
+          },
+          "on_true": {
+            "type": "invexp:sack/selected_item"
+          },
+          "property": "invexp:sack/has_contents"
+        },
+        "when": [
+          "firstperson_lefthand",
+          "firstperson_righthand"
+        ]
+      },
+      {
+        "model": {
+          "type": "minecraft:condition",
+          "on_false": {
+            "type": "minecraft:model",
+            "model": "invexp:item/sack",
+            "tints": [
+              {
+                "type": "minecraft:dye",
+                "default": -6265536
+              }
+            ]
+          },
+          "on_true": {
+            "type": "minecraft:composite",
+            "models": [
+              {
+                "type": "minecraft:model",
+                "model": "invexp:item/sack_open_back",
+                "tints": [
+                  {
+                    "type": "minecraft:dye",
+                    "default": -6265536
+                  }
+                ]
+              },
+              {
+                "type": "invexp:sack/selected_item"
+              },
+              {
+                "type": "minecraft:model",
+                "model": "invexp:item/sack_open_front",
+                "tints": [
+                  {
+                    "type": "minecraft:dye",
+                    "default": -6265536
+                  }
+                ]
+              }
+            ]
+          },
+          "property": "invexp:sack/is_open"
+        },
+        "when": "gui"
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "invexp:item/sack",
+      "tints": [
+        {
+          "type": "minecraft:dye",
+          "default": -6265536
+        }
+      ]
+    },
+    "property": "minecraft:display_context"
+  }
+}
