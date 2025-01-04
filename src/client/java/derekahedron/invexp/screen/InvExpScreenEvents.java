@@ -57,13 +57,13 @@ public class InvExpScreenEvents {
         Vector2i scrollVector = scroller.update(horizontal, vertical);
         int numScrolled = scrollVector.y == 0 ? -scrollVector.x : scrollVector.y;
         if (numScrolled == 0) {
-            return true;
+            return false;
         }
 
         // Scroll to the new index
         int newSelectedIndex = Scroller.scrollCycling(numScrolled, contents.getSelectedIndex(), contents.getStacks().size());
         if (newSelectedIndex == contents.getSelectedIndex()) {
-            return true;
+            return false;
         }
 
         // Creative screens do not have slot ids that are synced, so we must find the corresponding slot

@@ -31,7 +31,7 @@ public abstract class ContainerItemContents implements ContainerItemContentsChec
      * @param stack     stack to create contents from if possible
      * @return          contents created from the stack; null if none are created
      */
-    public static @Nullable ContainerItemContents of(@NotNull ItemStack stack) {
+    public static @Nullable ContainerItemContents of(@Nullable ItemStack stack) {
         ContainerItemContents contents;
         if ((contents = SackContents.of(stack)) != null) {
             return contents;
