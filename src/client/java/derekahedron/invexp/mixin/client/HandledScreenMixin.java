@@ -1,8 +1,6 @@
 package derekahedron.invexp.mixin.client;
 
 import derekahedron.invexp.component.types.SackContentsComponent;
-import derekahedron.invexp.gui.tooltip.QuiverTooltipSubmenuHandler;
-import derekahedron.invexp.gui.tooltip.SackTooltipSubmenuHandler;
 import derekahedron.invexp.sack.SackContents;
 import derekahedron.invexp.util.ContainerItemSlotDragger;
 import net.minecraft.client.gui.DrawContext;
@@ -164,18 +162,5 @@ public class HandledScreenMixin {
             openContentsComponent.isOpen = false;
         }
         openContentsComponent = null;
-    }
-
-    /**
-     * Add custom handlers for sacks and quivers.
-     */
-    @Inject(
-            method = "init",
-            at = @At("TAIL")
-    )
-    private void initCustomHandlers(@NotNull CallbackInfo ci) {
-        HandledScreen<?> self = (HandledScreen<?>) (Object) this;
-        self.addTooltipSubmenuHandler(new SackTooltipSubmenuHandler(self.client));
-        self.addTooltipSubmenuHandler(new QuiverTooltipSubmenuHandler(self.client));
     }
 }

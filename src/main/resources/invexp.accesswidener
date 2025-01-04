@@ -51,7 +51,6 @@ accessible method net/minecraft/client/gui/tooltip/BundleTooltipComponent getPro
 
 # Allow dragging of Sack, Quiver, and Bundle items in the GUI
 accessible field net/minecraft/client/gui/screen/Screen client Lnet/minecraft/client/MinecraftClient;
-accessible method net/minecraft/client/gui/screen/ingame/HandledScreen addTooltipSubmenuHandler (Lnet/minecraft/client/gui/tooltip/TooltipSubmenuHandler;)V
 accessible field net/minecraft/client/gui/screen/ingame/HandledScreen focusedSlot Lnet/minecraft/screen/slot/Slot;
 accessible field net/minecraft/client/gui/screen/ingame/HandledScreen touchDragSlotStart Lnet/minecraft/screen/slot/Slot;
 accessible field net/minecraft/client/gui/screen/ingame/HandledScreen cursorDragging Z
