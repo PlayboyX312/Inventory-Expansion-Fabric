@@ -43,7 +43,7 @@ public class SackContents extends ContainerItemContents implements SackContentsC
      * @param sackStack     stack to create contents from
      * @return              created SackContents; null if not valid
      */
-    public static @Nullable SackContents of(@NotNull ItemStack sackStack) {
+    public static @Nullable SackContents of(@Nullable ItemStack sackStack) {
         SackContentsComponent component = SackContentsComponent.getComponent(sackStack);
         if (component == null) {
             return null;

@@ -159,8 +159,8 @@ public class QuiverContentsComponent {
      * @param stack     stack to get the component from
      * @return          QuiverContentsComponent of the stack; null if invalid
      */
-    public static @Nullable QuiverContentsComponent getComponent(@NotNull ItemStack stack) {
-        if (!stack.isEmpty() && stack.getItem() instanceof QuiverItem) {
+    public static @Nullable QuiverContentsComponent getComponent(@Nullable ItemStack stack) {
+        if (stack != null && !stack.isEmpty() && stack.getItem() instanceof QuiverItem) {
             return stack.get(InvExpDataComponentTypes.QUIVER_CONTENTS);
         }
         else {

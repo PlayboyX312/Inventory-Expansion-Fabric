@@ -42,7 +42,7 @@ public class QuiverContents extends ContainerItemContents implements QuiverConte
      * @param quiverStack   stack to create contents from
      * @return              created QuiverContents; null if not valid
      */
-    public static @Nullable QuiverContents of(@NotNull ItemStack quiverStack) {
+    public static @Nullable QuiverContents of(@Nullable ItemStack quiverStack) {
         QuiverContentsComponent component = QuiverContentsComponent.getComponent(quiverStack);
         if (component == null) {
             return null;

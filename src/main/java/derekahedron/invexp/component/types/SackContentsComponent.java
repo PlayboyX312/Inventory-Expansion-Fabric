@@ -197,8 +197,8 @@ public class SackContentsComponent {
      * @param stack     stack to get the component from
      * @return          SackContentsComponent of the stack; null if invalid
      */
-    public static @Nullable SackContentsComponent getComponent(@NotNull ItemStack stack) {
-        if (!stack.isEmpty() && stack.getItem() instanceof SackItem) {
+    public static @Nullable SackContentsComponent getComponent(@Nullable ItemStack stack) {
+        if (stack != null && !stack.isEmpty() && stack.getItem() instanceof SackItem) {
             return stack.get(InvExpDataComponentTypes.SACK_CONTENTS);
         }
         else {
