@@ -53,6 +53,7 @@ public class MinecraftServerMixin {
     private @NotNull Consumer<Object> detectDataPackReload(Consumer<Object> consumer) {
         return (var) -> {
             consumer.accept(var);
+            SackInsertableManager.updateInstanceTaggedInsertables();
             DataPackChangeDetector.markDirty();
         };
     }

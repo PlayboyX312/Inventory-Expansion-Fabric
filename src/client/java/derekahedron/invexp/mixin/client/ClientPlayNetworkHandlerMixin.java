@@ -1,5 +1,6 @@
 package derekahedron.invexp.mixin.client;
 
+import derekahedron.invexp.sack.SackInsertableManager;
 import derekahedron.invexp.util.DataPackChangeDetector;
 import derekahedron.invexp.util.ContainerItemContents;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
@@ -66,6 +67,7 @@ public class ClientPlayNetworkHandlerMixin {
     private void afterSynchronizeTags(SynchronizeTagsS2CPacket packet, @NotNull CallbackInfo ci) {
         ClientPlayNetworkHandler self = (ClientPlayNetworkHandler) (Object) this;
         if (!self.connection.isLocal()) {
+            SackInsertableManager.updateInstanceTaggedInsertables();
             DataPackChangeDetector.markDirty();
         }
     }

@@ -2,7 +2,6 @@ package derekahedron.invexp.entity.player;
 
 import derekahedron.invexp.sack.SackUsage;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Hand;
 
 /**
  * Adds methods to the player entity. When a player starts using a stack,
@@ -30,14 +29,6 @@ public interface PlayerEntityDuck {
      * Stop player using sack.
      */
     void invexp$stopUsingSack();
-
-    /**
-     * Gets the sack usage related to the item in the given hand.
-     *
-     * @param hand  hand to get usage for
-     * @return      SackUsage for the given hand; null if there is none
-     */
-    SackUsage invexp$getUsageInHand(Hand hand);
 
     /**
      * Gets the usage for the player with a sack stack matching the given stack.
