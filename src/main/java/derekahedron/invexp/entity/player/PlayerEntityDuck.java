@@ -2,7 +2,6 @@ package derekahedron.invexp.entity.player;
 
 import derekahedron.invexp.sack.SackUsage;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Hand;
 
 /**
  * Adds methods to the player entity. When a player starts using a stack,
