@@ -145,24 +145,6 @@ public abstract class PlayerEntityMixin implements PlayerEntityDuck {
     }
 
     /**
-     * Gets the sack usage related to the item in the given hand.
-     *
-     * @param hand  hand to get usage for
-     * @return      SackUsage for the given hand; null if there is none
-     */
-    @Override
-    public SackUsage invexp$getUsageInHand(@NotNull Hand hand) {
-        PlayerEntity self = (PlayerEntity) (Object) this;
-        ItemStack heldStack;
-        switch (hand) {
-            case MAIN_HAND -> heldStack = self.getMainHandStack();
-            case OFF_HAND -> heldStack = self.getOffHandStack();
-            default -> throw new IllegalArgumentException("Invalid hand " + hand);
-        }
-        return invexp$getUsageForSackStack(heldStack);
-    }
-
-    /**
      * Gets the usage for the player with a sack stack matching the given stack.
      *
      * @param sackStack     sack stack to get usage for

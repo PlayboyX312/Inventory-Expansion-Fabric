@@ -32,14 +32,6 @@ public interface PlayerEntityDuck {
     void invexp$stopUsingSack();
 
     /**
-     * Gets the sack usage related to the item in the given hand.
-     *
-     * @param hand  hand to get usage for
-     * @return      SackUsage for the given hand; null if there is none
-     */
-    SackUsage invexp$getUsageInHand(Hand hand);
-
-    /**
      * Gets the usage for the player with a sack stack matching the given stack.
      *
      * @param sackStack     sack stack to get usage for
