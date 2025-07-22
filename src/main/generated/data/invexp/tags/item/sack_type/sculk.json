@@ -1,0 +1,30 @@
+{
+  "values": [
+    "minecraft:sculk",
+    "minecraft:sculk_vein",
+    "minecraft:sculk_catalyst",
+    "minecraft:sculk_shrieker",
+    "minecraft:sculk_sensor",
+    "minecraft:calibrated_sculk_sensor",
+    {
+      "id": "wilderwild:osseous_sculk",
+      "required": false
+    },
+    {
+      "id": "wilderwild:sculk_stairs",
+      "required": false
+    },
+    {
+      "id": "wilderwild:sculk_slab",
+      "required": false
+    },
+    {
+      "id": "wilderwild:sculk_wall",
+      "required": false
+    },
+    {
+      "id": "wilderwild:hanging_tendril",
+      "required": false
+    }
+  ]
+}

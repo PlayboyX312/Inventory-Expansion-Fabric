@@ -16,6 +16,9 @@
 	"icon": "assets/invexp/icon.png",
 	"environment": "*",
 	"entrypoints": {
+		"fabric-datagen": [
+			"derekahedron.invexp.InventoryExpansionDataGenerator"
+		],
 		"main": [
 			"derekahedron.invexp.InventoryExpansion"
 		],

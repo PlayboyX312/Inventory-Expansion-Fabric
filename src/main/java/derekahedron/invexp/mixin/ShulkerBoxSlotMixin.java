@@ -1,6 +1,7 @@
 package derekahedron.invexp.mixin;
 
 import derekahedron.invexp.util.ContainerItemContents;
+import derekahedron.invexp.util.ContainerItemContentsReader;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.slot.ShulkerBoxSlot;
 import org.jetbrains.annotations.NotNull;
@@ -24,14 +25,11 @@ public class ShulkerBoxSlotMixin {
     )
     private void canInsertContainerItem(ItemStack stack, @NotNull CallbackInfoReturnable<Boolean> cir) {
         if (cir.getReturnValue()) {
-            ContainerItemContents contents = ContainerItemContents.of(stack);
+            ContainerItemContentsReader contents = ContainerItemContents.of(stack);
             if (contents != null && !contents.isEmpty()) {
                 ShulkerBoxSlot self = (ShulkerBoxSlot) (Object) this;
-                for (ItemStack nestedStack : contents.getStacks()) {
-                    if (!self.canInsert(nestedStack)) {
-                        cir.setReturnValue(false);
-                        return;
-                    }
+                if (!contents.getStacks().stream().allMatch(self::canInsert)) {
+                    cir.setReturnValue(false);
                 }
             }
         }

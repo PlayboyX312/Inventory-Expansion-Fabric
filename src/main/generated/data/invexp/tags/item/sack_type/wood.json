@@ -1,0 +1,30 @@
+{
+  "values": [
+    "minecraft:stick",
+    "#minecraft:logs",
+    "#minecraft:planks",
+    "#minecraft:wooden_stairs",
+    "#minecraft:wooden_slabs",
+    "#minecraft:wooden_fences",
+    "#minecraft:fence_gates",
+    "minecraft:mangrove_roots",
+    "minecraft:ladder",
+    "minecraft:bookshelf",
+    "minecraft:chiseled_bookshelf",
+    "minecraft:chest",
+    "minecraft:barrel",
+    "minecraft:trapped_chest",
+    "minecraft:stick",
+    "minecraft:bowl",
+    "#c:rods/wooden",
+    "#c:fences/wooden",
+    "#c:fence_gates/wooden",
+    "#c:chests/wooden",
+    "#c:barrels/wooden",
+    "#c:rods/wooden",
+    {
+      "id": "biomesoplenty:dead_branch",
+      "required": false
+    }
+  ]
+}

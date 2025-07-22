@@ -3,11 +3,16 @@ package derekahedron.invexp.mixin;
 import derekahedron.invexp.entity.player.PlayerEntityDuck;
 import derekahedron.invexp.quiver.QuiverContents;
 import derekahedron.invexp.sack.SackContents;
+import derekahedron.invexp.sack.SackContentsReader;
 import derekahedron.invexp.sack.SackUsage;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.collection.DefaultedList;
 import org.jetbrains.annotations.NotNull;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -15,6 +20,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(PlayerInventory.class)
 public class PlayerInventoryMixin {
+
+    @Shadow @Final private DefaultedList<ItemStack> main;
+
+    @Shadow @Final public PlayerEntity player;
 
     /**
      * When an item is inserted into the players inventory, first try inserting into quivers and sacks.
@@ -30,7 +39,7 @@ public class PlayerInventoryMixin {
 
         // First attempt pickup into quivers
         // Start by attempting pickup into main hand
-        if (QuiverContents.attemptPickup(self.getStack(self.selectedSlot), stack)) {
+        if (QuiverContents.attemptPickup(self.getStack(self.getSelectedSlot()), stack)) {
             cir.setReturnValue(true);
             return;
         }
@@ -41,7 +50,7 @@ public class PlayerInventoryMixin {
         }
         else {
             // Then try remaining slots
-            for (int slot = 0; slot < self.main.size(); slot++) {
+            for (int slot = 0; slot < main.size(); slot++) {
                 if (QuiverContents.attemptPickup(self.getStack(slot), stack)) {
                     cir.setReturnValue(true);
                     return;
@@ -51,17 +60,17 @@ public class PlayerInventoryMixin {
 
         // Next try picking up into sacks
         // Start with main hand
-        if (SackContents.attemptPickup(self.getStack(self.selectedSlot), stack)) {
+        if (SackContents.attemptPickup(self.getStack(self.getSelectedSlot()), stack, player)) {
             cir.setReturnValue(true);
         }
         // Then try offhand
-        else if (SackContents.attemptPickup(self.getStack(40), stack)) {
+        else if (SackContents.attemptPickup(self.getStack(40), stack, player)) {
             cir.setReturnValue(true);
         }
         else {
             // Finally try remaining slots
-            for (int slot = 0; slot < self.main.size(); slot++) {
-                if (SackContents.attemptPickup(self.getStack(slot), stack)) {
+            for (int slot = 0; slot < main.size(); slot++) {
+                if (SackContents.attemptPickup(self.getStack(slot), stack, player)) {
                     cir.setReturnValue(true);
                     break;
                 }
@@ -104,8 +113,8 @@ public class PlayerInventoryMixin {
             return;
         }
         PlayerInventory self = (PlayerInventory) (Object) this;
-        ItemStack sackStack = self.getMainHandStack();
-        SackContents contents = SackContents.of(sackStack);
+        ItemStack sackStack = self.getSelectedStack();
+        SackContents contents = SackContents.of(sackStack, player.getWorld());
         if (contents == null || contents.isEmpty()) {
             return;
         }
@@ -126,15 +135,14 @@ public class PlayerInventoryMixin {
         if (cir.getReturnValue() != -1) {
             return;
         }
-        PlayerInventory self = (PlayerInventory) (Object) this;
 
         // We want to prioritize sacks that already have the item selected, but if we find one that
         // doesn't, we store it here.
         int backupSlot = -1;
         int newSelectedIndex = -1;
 
-        for (int slot = 0; slot < self.main.size(); slot++) {
-            SackContents contents = SackContents.of(self.main.get(slot));
+        for (int slot = 0; slot < main.size(); slot++) {
+            SackContentsReader contents = SackContents.of(main.get(slot));
             if (contents != null && !contents.isEmpty()) {
                 if (ItemStack.areItemsAndComponentsEqual(stack, contents.getSelectedStack())) {
                     // Find first sack that has the item selected already
@@ -153,7 +161,7 @@ public class PlayerInventoryMixin {
 
         // If there is a backup, set the selected index of that backup and return the slot.
         if (backupSlot != -1) {
-            SackContents contents = SackContents.of(self.main.get(backupSlot));
+            SackContents contents = SackContents.of(main.get(backupSlot), player.getWorld());
             if (contents != null) {
                 contents.setSelectedIndex(newSelectedIndex);
                 cir.setReturnValue(backupSlot);

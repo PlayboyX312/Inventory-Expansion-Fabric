@@ -3,8 +3,10 @@ package derekahedron.invexp.sack;
 import derekahedron.invexp.component.InvExpDataComponentTypes;
 import derekahedron.invexp.component.types.SackInsertableComponent;
 import net.minecraft.item.ItemStack;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
+import org.apache.commons.lang3.math.Fraction;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -12,9 +14,9 @@ import org.jetbrains.annotations.Nullable;
  * Contains helper functions and default values for data components related to sacks.
  */
 public class SacksHelper {
-    public static final int DEFAULT_SACK_WEIGHT = 100;
+    public static final Fraction DEFAULT_SACK_WEIGHT = Fraction.ONE;
     public static final int DEFAULT_MAX_SACK_TYPES = 0;
-    public static final int DEFAULT_MAX_SACK_WEIGHT = 0;
+    public static final Fraction DEFAULT_MAX_SACK_WEIGHT = Fraction.ZERO;
     public static final int DEFAULT_MAX_SACK_STACKS = 0;
 
     /**
@@ -33,7 +35,7 @@ public class SacksHelper {
      * @param stack     stack to test
      * @return          maximum sack weight this item can hold
      */
-    public static int getMaxSackWeight(@NotNull ItemStack stack) {
+    public static Fraction getMaxSackWeight(@NotNull ItemStack stack) {
         return stack.getOrDefault(InvExpDataComponentTypes.MAX_SACK_WEIGHT, DEFAULT_MAX_SACK_WEIGHT);
     }
 
@@ -53,27 +55,23 @@ public class SacksHelper {
      * @param stack     stack to test
      * @return          registry entry of the sack type; null if there is none
      */
-    public static @Nullable RegistryEntry<SackType> getSackType(@NotNull ItemStack stack) {
+    public static @Nullable RegistryKey<SackType> getSackType(@NotNull ItemStack stack) {
         // Use the data in the sack insertable component first
         SackInsertableComponent component = stack.get(InvExpDataComponentTypes.SACK_INSERTABLE);
         if (component != null) {
-            if (component.sackType().isPresent()) {
-                return component.sackType().get();
-            }
-            else {
-                return null;
-            }
+            return component.sackType().flatMap(RegistryEntry::getKey).orElse(null);
         }
 
         // If there is no insertable, try the sack type component
         // Use this when possible
-        if (stack.contains(InvExpDataComponentTypes.SACK_TYPE)) {
-            return stack.get(InvExpDataComponentTypes.SACK_TYPE);
+        RegistryEntry<SackType> sackType = stack.get(InvExpDataComponentTypes.SACK_TYPE);
+        if (sackType != null) {
+            return sackType.getKey().orElse(null);
         }
 
         // If nothing exists, try to grab from the insertable manager.
-        if (SackInsertableManager.getInstance() != null) {
-            return SackInsertableManager.getInstance().getType(stack.getItem());
+        if (SackDefaultManager.getInstance() != null) {
+            return SackDefaultManager.getInstance().getType(stack);
         }
 
         // Fail if manager is not created before running this
@@ -86,27 +84,26 @@ public class SacksHelper {
      * @param stack     stack to test
      * @return          sack weight of the item
      */
-    public static int getSackWeight(@NotNull ItemStack stack) {
+    public static Fraction getSackWeight(@NotNull ItemStack stack) {
         // Use the data in the sack insertable component first
         SackInsertableComponent component = stack.get(InvExpDataComponentTypes.SACK_INSERTABLE);
         if (component != null) {
-            if (component.sackWeight().isPresent()) {
-                return component.sackWeight().get();
-            }
-            else {
-                return DEFAULT_SACK_WEIGHT;
-            }
+            return component.sackWeight().orElse(DEFAULT_SACK_WEIGHT)
+                    .divideBy(Fraction.getFraction(stack.getMaxCount()));
         }
 
         // If there is no insertable, try the sack weight component
         // Use this when possible
-        if (stack.contains(InvExpDataComponentTypes.SACK_WEIGHT)) {
-            return stack.getOrDefault(InvExpDataComponentTypes.SACK_WEIGHT, DEFAULT_SACK_WEIGHT);
+        Fraction sackWeight = stack.get(InvExpDataComponentTypes.SACK_WEIGHT);
+        if (sackWeight != null) {
+            return sackWeight
+                    .divideBy(Fraction.getFraction(stack.getMaxCount()));
         }
 
         // If nothing exists, try to grab from the insertable manager.
-        if (SackInsertableManager.getInstance() != null) {
-            return SackInsertableManager.getInstance().getWeight(stack.getItem());
+        if (SackDefaultManager.getInstance() != null) {
+            return SackDefaultManager.getInstance().getWeight(stack)
+                    .divideBy(Fraction.getFraction(stack.getMaxCount()));
         }
 
         // Fail if manager is not created before running this
@@ -119,8 +116,8 @@ public class SacksHelper {
      * @param stack     stack to test
      * @return          weight this entire stack takes up
      */
-    public static int getSackWeightOfStack(@NotNull ItemStack stack) {
-        return getSackWeight(stack) * stack.getCount();
+    public static Fraction getSackWeightOfStack(@NotNull ItemStack stack) {
+        return getSackWeight(stack).multiplyBy(Fraction.getFraction(stack.getCount()));
     }
 
     /**
@@ -140,15 +137,10 @@ public class SacksHelper {
      * @param sackType  type to get identifier from
      * @return          Identifier of the given sack type; null if there is none
      */
-    public static @Nullable Identifier getSackTypeIdentifier(@Nullable RegistryEntry<SackType> sackType) {
+    public static @Nullable Identifier getSackTypeIdentifier(@Nullable RegistryKey<SackType> sackType) {
         if (sackType == null) {
             return null;
         }
-        if (sackType.getKey().isPresent()) {
-            return sackType.getKey().get().getValue();
-        }
-        else {
-            return null;
-        }
+        return sackType.getValue();
     }
 }

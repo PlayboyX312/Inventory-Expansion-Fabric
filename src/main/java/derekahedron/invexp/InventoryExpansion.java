@@ -4,6 +4,7 @@ import derekahedron.invexp.block.cauldron.InvExpCauldronBehavior;
 import derekahedron.invexp.block.dispenser.InvExpDispenserBehavior;
 import derekahedron.invexp.component.InvExpDataComponentTypes;
 import derekahedron.invexp.item.InvExpItems;
+import derekahedron.invexp.loot.InvExpLootTableModifiers;
 import derekahedron.invexp.network.InvExpNetworking;
 import derekahedron.invexp.registry.InvExpRegistryKeys;
 import derekahedron.invexp.server.network.ServerNetworkHandlers;
@@ -18,6 +19,7 @@ import org.slf4j.LoggerFactory;
  */
 public class InventoryExpansion implements ModInitializer {
 	public static final String MOD_ID = "invexp";
+	public static final String MOD_NAME = "Inventory Expansion";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 	/**
@@ -33,5 +35,6 @@ public class InventoryExpansion implements ModInitializer {
 		InvExpDispenserBehavior.initialize();
 		InvExpNetworking.initialize();
 		ServerNetworkHandlers.initialize();
+		InvExpLootTableModifiers.initialize();
 	}
 }

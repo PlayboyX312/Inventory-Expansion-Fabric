@@ -1,0 +1,22 @@
+{
+  "values": [
+    "minecraft:purpur_block",
+    "minecraft:purpur_pillar",
+    "minecraft:purpur_stairs",
+    "minecraft:purpur_slab",
+    "minecraft:end_rod",
+    "minecraft:popped_chorus_fruit",
+    {
+      "id": "trailiertales:cracked_purpur_block",
+      "required": false
+    },
+    {
+      "id": "trailiertales:purpur_wall",
+      "required": false
+    },
+    {
+      "id": "trailiertales:chiseled_purpur_block",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "values": [
+    "minecraft:bricks",
+    "minecraft:brick_stairs",
+    "minecraft:brick_slab",
+    "minecraft:brick_wall",
+    "minecraft:brick",
+    "#c:bricks/normal",
+    {
+      "id": "trailiertales:cracked_bricks",
+      "required": false
+    },
+    {
+      "id": "trailiertales:mossy_bricks",
+      "required": false
+    },
+    {
+      "id": "trailiertales:mossy_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "trailiertales:mossy_brick_slab",
+      "required": false
+    },
+    {
+      "id": "trailiertales:mossy_brick_wall",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "values": [
+    {
+      "id": "biomesoplenty:null_block",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:null_leaves",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:null_plant",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:anomaly",
+      "required": false
+    },
+    {
+      "id": "wilderwild:null_block",
+      "required": false
+    }
+  ]
+}

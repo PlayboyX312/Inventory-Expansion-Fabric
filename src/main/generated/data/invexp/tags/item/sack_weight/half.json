@@ -1,0 +1,155 @@
+{
+  "values": [
+    "minecraft:iron_bars",
+    "#minecraft:wool_carpets",
+    "minecraft:glass_pane",
+    "minecraft:white_stained_glass_pane",
+    "minecraft:light_gray_stained_glass_pane",
+    "minecraft:gray_stained_glass_pane",
+    "minecraft:black_stained_glass_pane",
+    "minecraft:brown_stained_glass_pane",
+    "minecraft:red_stained_glass_pane",
+    "minecraft:orange_stained_glass_pane",
+    "minecraft:yellow_stained_glass_pane",
+    "minecraft:lime_stained_glass_pane",
+    "minecraft:green_stained_glass_pane",
+    "minecraft:cyan_stained_glass_pane",
+    "minecraft:light_blue_stained_glass_pane",
+    "minecraft:blue_stained_glass_pane",
+    "minecraft:purple_stained_glass_pane",
+    "minecraft:magenta_stained_glass_pane",
+    "minecraft:pink_stained_glass_pane",
+    "#minecraft:beds",
+    "minecraft:moss_carpet",
+    "minecraft:pale_moss_carpet",
+    "minecraft:bamboo",
+    "minecraft:glow_lichen",
+    "minecraft:cocoa_beans",
+    "minecraft:glow_berries",
+    "minecraft:sweet_berries",
+    "minecraft:nether_wart",
+    "minecraft:kelp",
+    "minecraft:sculk_vein",
+    "minecraft:minecart",
+    "minecraft:hopper_minecart",
+    "minecraft:chest_minecart",
+    "minecraft:tnt_minecart",
+    "minecraft:command_block_minecart",
+    "minecraft:bone_meal",
+    "minecraft:saddle",
+    "#minecraft:boats",
+    "minecraft:goat_horn",
+    "minecraft:music_disc_13",
+    "minecraft:music_disc_cat",
+    "minecraft:music_disc_blocks",
+    "minecraft:music_disc_chirp",
+    "minecraft:music_disc_far",
+    "minecraft:music_disc_mall",
+    "minecraft:music_disc_mellohi",
+    "minecraft:music_disc_stal",
+    "minecraft:music_disc_strad",
+    "minecraft:music_disc_ward",
+    "minecraft:music_disc_11",
+    "minecraft:music_disc_creator_music_box",
+    "minecraft:music_disc_wait",
+    "minecraft:music_disc_creator",
+    "minecraft:music_disc_precipice",
+    "minecraft:music_disc_otherside",
+    "minecraft:music_disc_relic",
+    "minecraft:music_disc_5",
+    "minecraft:music_disc_pigstep",
+    "minecraft:chorus_fruit",
+    "minecraft:melon_slice",
+    "minecraft:carrot",
+    "minecraft:potato",
+    "minecraft:beetroot",
+    "minecraft:mushroom_stew",
+    "minecraft:beetroot_soup",
+    "minecraft:rabbit_stew",
+    "minecraft:suspicious_stew",
+    "minecraft:wheat",
+    "minecraft:field_masoned_banner_pattern",
+    "minecraft:bordure_indented_banner_pattern",
+    "minecraft:flower_banner_pattern",
+    "minecraft:creeper_banner_pattern",
+    "minecraft:skull_banner_pattern",
+    "minecraft:mojang_banner_pattern",
+    "minecraft:globe_banner_pattern",
+    "minecraft:piglin_banner_pattern",
+    "minecraft:flow_banner_pattern",
+    "minecraft:guster_banner_pattern",
+    "minecraft:enchanted_book",
+    "#minecraft:slabs",
+    "#c:glass_panes",
+    "#c:music_discs",
+    "#c:foods/soup",
+    {
+      "id": "biomesoplenty:barnacles",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:glowing_moss_carpet",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:webbing",
+      "required": false
+    },
+    {
+      "id": "#storagedrawers:half_drawers",
+      "required": false
+    },
+    {
+      "id": "storagedrawers:compacting_half_drawers_2",
+      "required": false
+    },
+    {
+      "id": "storagedrawers:compacting_half_drawers_3",
+      "required": false
+    },
+    {
+      "id": "trailiertales:dawntrail",
+      "required": false
+    },
+    {
+      "id": "trailiertales:cyan_rose_seeds",
+      "required": false
+    },
+    {
+      "id": "trailiertales:dawntrail_seeds",
+      "required": false
+    },
+    {
+      "id": "trailiertales:manedrop_germ",
+      "required": false
+    },
+    {
+      "id": "wilderwild:auburn_moss_carpet",
+      "required": false
+    },
+    {
+      "id": "wilderwild:auburn_creeping_moss",
+      "required": false
+    },
+    {
+      "id": "wilderwild:pricky_pear",
+      "required": false
+    },
+    {
+      "id": "wilderwild:pollen",
+      "required": false
+    },
+    {
+      "id": "wilderwild:barnacles",
+      "required": false
+    },
+    {
+      "id": "wilderwild:copper_horn",
+      "required": false
+    },
+    {
+      "id": "wilderwild:butterfly_bottle",
+      "required": false
+    }
+  ]
+}

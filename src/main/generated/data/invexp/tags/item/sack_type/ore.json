@@ -1,0 +1,89 @@
+{
+  "values": [
+    "#minecraft:coal_ores",
+    "#minecraft:iron_ores",
+    "#minecraft:copper_ores",
+    "#minecraft:gold_ores",
+    "#minecraft:redstone_ores",
+    "#minecraft:emerald_ores",
+    "#minecraft:lapis_ores",
+    "#minecraft:diamond_ores",
+    "minecraft:nether_quartz_ore",
+    "minecraft:ancient_debris",
+    "minecraft:raw_iron_block",
+    "minecraft:raw_copper_block",
+    "minecraft:raw_gold_block",
+    "minecraft:glowstone",
+    "minecraft:small_amethyst_bud",
+    "minecraft:medium_amethyst_bud",
+    "minecraft:large_amethyst_bud",
+    "minecraft:amethyst_cluster",
+    "minecraft:redstone",
+    "#minecraft:coals",
+    "minecraft:raw_iron",
+    "minecraft:raw_copper",
+    "minecraft:raw_gold",
+    "minecraft:emerald",
+    "minecraft:lapis_lazuli",
+    "minecraft:diamond",
+    "minecraft:quartz",
+    "minecraft:amethyst_shard",
+    "minecraft:iron_nugget",
+    "minecraft:gold_nugget",
+    "minecraft:iron_ingot",
+    "minecraft:copper_ingot",
+    "minecraft:gold_ingot",
+    "minecraft:netherite_scrap",
+    "minecraft:netherite_ingot",
+    "minecraft:flint",
+    "minecraft:echo_shard",
+    "minecraft:glowstone_dust",
+    "#c:storage_blocks/coal",
+    "#c:storage_blocks/redstone",
+    "#c:storage_blocks/emerald",
+    "#c:storage_blocks/lapis",
+    "#c:storage_blocks/diamond",
+    "#c:ores",
+    "#c:storage_blocks/raw_iron",
+    "#c:storage_blocks/raw_copper",
+    "#c:storage_blocks/raw_gold",
+    "#c:raw_materials",
+    "#c:gems",
+    "#c:nuggets",
+    "#c:ingots",
+    "#c:dusts/redstone",
+    "#c:dusts/glowstone",
+    {
+      "id": "biomesoplenty:rose_quartz_cluster",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:large_rose_quartz_bud",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:medium_rose_quartz_bud",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:small_rose_quartz_bud",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:rose_quartz_chunk",
+      "required": false
+    },
+    {
+      "id": "waystones:warp_dust",
+      "required": false
+    },
+    {
+      "id": "waystones:dormant_shard",
+      "required": false
+    },
+    {
+      "id": "waystones:attuned_shard",
+      "required": false
+    }
+  ]
+}

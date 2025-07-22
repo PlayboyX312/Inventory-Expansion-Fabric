@@ -7,30 +7,27 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 
 /**
- * Stores all Sound Events for Inventory Expansion
+ * Sound Events for Inventory Expansion
  */
 public class InvExpSoundEvents {
-    public static final SoundEvent ITEM_SACK_INSERT;
-    public static final SoundEvent ITEM_SACK_INSERT_FAIL;
-    public static final SoundEvent ITEM_SACK_REMOVE_ONE;
-    public static final SoundEvent ITEM_QUIVER_INSERT;
-    public static final SoundEvent ITEM_QUIVER_INSERT_FAIL;
-    public static final SoundEvent ITEM_QUIVER_REMOVE_ONE;
-
-    static {
-        ITEM_SACK_INSERT = register("item.sack.insert");
-        ITEM_SACK_INSERT_FAIL = register("item.sack.insert_fail");
-        ITEM_SACK_REMOVE_ONE = register("item.sack.remove_one");
-        ITEM_QUIVER_INSERT = register("item.quiver.insert");
-        ITEM_QUIVER_INSERT_FAIL = register("item.quiver.insert_fail");
-        ITEM_QUIVER_REMOVE_ONE = register("item.quiver.remove_one");
-    }
+    public static final SoundEvent ITEM_SACK_INSERT =
+            register("item.sack.insert");
+    public static final SoundEvent ITEM_SACK_INSERT_FAIL =
+            register("item.sack.insert_fail");
+    public static final SoundEvent ITEM_SACK_REMOVE_ONE =
+            register("item.sack.remove_one");
+    public static final SoundEvent ITEM_QUIVER_INSERT =
+            register("item.quiver.insert");
+    public static final SoundEvent ITEM_QUIVER_INSERT_FAIL =
+            register("item.quiver.insert_fail");
+    public static final SoundEvent ITEM_QUIVER_REMOVE_ONE =
+            register("item.quiver.remove_one");
 
     /**
-     * Register an Inventory Expansion sound event.
+     * Registers an Inventory Expansion sound event.
      *
-     * @param id    String to register the sound event under
-     * @return      SoundEvent that was created and registered
+     * @param id a <code>String</code> to register the sound event under
+     * @return the <code>SoundEvent</code> that was created and registered
      */
     public static SoundEvent register(String id) {
         Identifier identifier = InvExpUtil.identifier(id);

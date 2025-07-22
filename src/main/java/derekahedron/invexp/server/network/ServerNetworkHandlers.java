@@ -9,7 +9,7 @@ import net.minecraft.screen.ScreenHandler;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Stores callback functions for C2S payloads
+ * Callback functions for C2S payloads
  */
 public class ServerNetworkHandlers {
 
@@ -17,8 +17,8 @@ public class ServerNetworkHandlers {
      * Handles set index C2S payload.
      * Sets the selected index of the given container item.
      *
-     * @param payload   payload data of the request
-     * @param context   context of how the request was sent
+     * @param payload payload data of the request
+     * @param context context of how the request was sent
      */
     public static void onSetSelectedIndex(
             @NotNull SetSelectedIndexC2SPacket payload, ServerPlayNetworking.@NotNull Context context
@@ -28,18 +28,16 @@ public class ServerNetworkHandlers {
         int slotId = payload.slotId();
         if (slotId < 0 || slotId >= handler.slots.size()) {
             InventoryExpansion.LOGGER.debug(
-                    "Player {} set selected index of invalid slot id {}", context.player(), slotId
-            );
+                    "Player {} set selected index of invalid slot id {}", context.player(), slotId);
             return;
         }
 
-        // Makes sure the sack is valid
+        // Make sure the container is valid
         ItemStack stack = handler.slots.get(slotId).getStack();
-        ContainerItemContents contents = ContainerItemContents.of(stack);
+        ContainerItemContents contents = ContainerItemContents.of(stack, context.player().getWorld());
         if (contents == null) {
             InventoryExpansion.LOGGER.debug(
-                    "Player {} set selected index of invalid stack {}", context.player(), stack
-            );
+                    "Player {} set selected index of invalid stack {}", context.player(), stack);
             return;
         }
 
@@ -48,12 +46,11 @@ public class ServerNetworkHandlers {
     }
 
     /**
-     * Register handlers for C2S packets
+     * Registers handlers for C2S packets
      */
     public static void initialize() {
         ServerPlayNetworking.registerGlobalReceiver(
                 SetSelectedIndexC2SPacket.ID,
-                ServerNetworkHandlers::onSetSelectedIndex
-        );
+                ServerNetworkHandlers::onSetSelectedIndex);
     }
 }

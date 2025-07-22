@@ -1,0 +1,30 @@
+{
+  "values": [
+    "minecraft:trial_key",
+    "minecraft:ominous_trial_key",
+    {
+      "id": "storagedrawers:drawer_key",
+      "required": false
+    },
+    {
+      "id": "storagedrawers:quantify_key",
+      "required": false
+    },
+    {
+      "id": "storagedrawers:shroud_key",
+      "required": false
+    },
+    {
+      "id": "storagedrawers:personal_key",
+      "required": false
+    },
+    {
+      "id": "storagedrawers:personal_key_cofh",
+      "required": false
+    },
+    {
+      "id": "storagedrawers:priority_key",
+      "required": false
+    }
+  ]
+}

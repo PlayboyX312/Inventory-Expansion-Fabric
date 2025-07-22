@@ -48,7 +48,7 @@ public class ScreenHandlerMixin {
         }
 
         // Check that the item is a valid container
-        ContainerItemContents contents = ContainerItemContents.of(cursorStack);
+        ContainerItemContents contents = ContainerItemContents.of(cursorStack, player.getWorld());
         if (contents == null || (contents.isEmpty() && contents instanceof SackContents)) {
             return;
         }

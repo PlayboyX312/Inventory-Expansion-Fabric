@@ -10,8 +10,8 @@ import net.minecraft.client.render.item.model.ItemModel;
 import net.minecraft.client.render.model.ResolvableModel;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ItemDisplayContext;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ModelTransformationMode;
 import org.jetbrains.annotations.Nullable;
 
 public class SackSelectedItemModel implements ItemModel {
@@ -22,13 +22,11 @@ public class SackSelectedItemModel implements ItemModel {
      */
     @Override
     public void update(
-            ItemRenderState state, ItemStack stack, ItemModelManager resolver,
-            ModelTransformationMode transformationMode, @Nullable ClientWorld world,
-            @Nullable LivingEntity user, int seed
-    ) {
+            ItemRenderState state, ItemStack stack, ItemModelManager resolver, ItemDisplayContext displayContext,
+            @Nullable ClientWorld world, @Nullable LivingEntity user, int seed) {
         ItemStack selectedStack = SackContents.selectedStackOf(user, stack);
         if (selectedStack != stack) {
-            resolver.update(state, selectedStack, transformationMode, world, user, seed);
+            resolver.update(state, selectedStack, displayContext, world, user, seed);
         }
     }
 

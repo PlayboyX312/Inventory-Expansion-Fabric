@@ -1,0 +1,7 @@
+{
+  "items": "#invexp:sack_weight/fourth",
+  "sack_weight": {
+    "denominator": 4,
+    "numerator": 1
+  }
+}

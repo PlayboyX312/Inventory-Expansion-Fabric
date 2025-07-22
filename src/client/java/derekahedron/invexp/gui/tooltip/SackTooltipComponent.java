@@ -1,13 +1,14 @@
 package derekahedron.invexp.gui.tooltip;
 
-import derekahedron.invexp.sack.SackContents;
-import derekahedron.invexp.sack.SacksHelper;
+import derekahedron.invexp.sack.SackContentsReader;
 import derekahedron.invexp.util.InvExpUtil;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.tooltip.TooltipComponent;
 import net.minecraft.item.ItemStack;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.apache.commons.lang3.math.Fraction;
@@ -15,13 +16,14 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Special tooltip for displaying sacks and their contents.
  *
  * @param contents  sack contents to draw the tooltip from
  */
-public record SackTooltipComponent(SackContents contents) implements TooltipComponent, ContainerItemTooltipComponent {
+public record SackTooltipComponent(SackContentsReader contents) implements TooltipComponent, ContainerItemTooltipComponent {
     public static final Identifier SACK_PROGRESS_BAR_BORDER_TEXTURE = InvExpUtil.identifier("container/sack/sack_progressbar_border");
     public static final Identifier SACK_PROGRESS_BAR_FILL_TEXTURE = InvExpUtil.identifier("container/sack/sack_progressbar_fill");
     public static final Identifier SACK_PROGRESS_BAR_FULL_TEXTURE = InvExpUtil.identifier("container/sack/sack_progressbar_full");
@@ -32,7 +34,8 @@ public record SackTooltipComponent(SackContents contents) implements TooltipComp
     public static final Text SACK_EMPTY = Text.translatable("item.invexp.sack.empty");
     public static final Text SACK_TOO_MANY_STACKS = Text.translatable("item.invexp.sack.too_many_stacks");
     public static final String SACK_PARTIAL = "item.invexp.sack.partial";
-    public static final String SACK_EMPTY_DESCRIPTION = "item.invexp.sack.description.empty";
+    public static final Text SACK_EMPTY_DESCRIPTION = Text.translatable("item.invexp.sack.description.empty");
+    public static final String SACK_EMPTY_DESCRIPTION_PLURAL = "item.invexp.sack.description.empty.plural";
     public static final String SACK_TYPE_DESCRIPTION = "item.invexp.sack.description.type";
     public static final String SACK_TYPE_DESCRIPTION_CONJUNCTION = "item.invexp.sack.description.type.conjunction";
     public static final String SACK_TYPE_DESCRIPTION_MANY_CONJUNCTION = "item.invexp.sack.description.type.many.conjunction";
@@ -125,7 +128,12 @@ public record SackTooltipComponent(SackContents contents) implements TooltipComp
      * @return  empty sack description text
      */
     public @NotNull Text getSackEmptyDescription() {
-        return Text.translatable(SACK_EMPTY_DESCRIPTION, formatWeight(contents.getMaxSackWeight()));
+        Fraction maxWeight = contents.getMaxSackWeight();
+        if (!maxWeight.equals(Fraction.ONE)) {
+            return Text.translatable(SACK_EMPTY_DESCRIPTION_PLURAL, maxWeight.toProperString());
+        } else {
+            return SACK_EMPTY_DESCRIPTION;
+        }
     }
 
     /**
@@ -136,10 +144,12 @@ public record SackTooltipComponent(SackContents contents) implements TooltipComp
     public @Nullable Text getSackTypeDescription() {
         Text description = null;
         // Get list of all names
-        List<Text> names = contents.getSackTypes().stream()
-                .map(RegistryEntry::value)
-                .filter((sackType) -> sackType.name().isPresent())
-                .map((sackType) -> sackType.name().get())
+        List<? extends Text> names = contents.getSackTypes().stream()
+                .map(RegistryEntry::getKey)
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .map(RegistryKey::getValue)
+                .map(id -> Text.translatable("sack_type." + id.getNamespace() + "." + id.getPath()))
                 .toList();
 
         for (int i = 0; i < names.size(); i++) {
@@ -246,16 +256,13 @@ public record SackTooltipComponent(SackContents contents) implements TooltipComp
      */
     @Override
     public @NotNull Text getProgressBarLabel() {
-        if (contents.getTotalWeight() >= contents.getMaxSackWeight()) {
+        if (contents.getTotalWeight().compareTo(contents.getMaxSackWeight()) >= 0) {
             return SACK_FULL;
-        }
-        else if (getStacks().size() >= contents.getMaxSackStacks()) {
+        } else if (getStacks().size() >= contents.getMaxSackStacks()) {
             return SACK_TOO_MANY_STACKS;
-        }
-        else if (contents.isEmpty()) {
+        } else if (contents.isEmpty()) {
             return SACK_EMPTY;
-        }
-        else {
+        } else {
             return Text.translatable(SACK_PARTIAL, formatWeight(contents.getTotalWeight()), formatWeight(contents.getMaxSackWeight()));
         }
     }
@@ -267,12 +274,12 @@ public record SackTooltipComponent(SackContents contents) implements TooltipComp
      * @param weight    sack weight to format
      * @return          formatted text representing the sack weight
      */
-    public static @NotNull Text formatWeight(int weight) {
-        if (weight % SacksHelper.DEFAULT_SACK_WEIGHT == 0) {
-            return Text.of(String.valueOf(weight / SacksHelper.DEFAULT_SACK_WEIGHT));
-        }
-        else {
-            return Text.of(String.format("%.2f", weight / (double) SacksHelper.DEFAULT_SACK_WEIGHT));
+    public static @NotNull MutableText formatWeight(Fraction weight) {
+        weight = weight.multiplyBy(Fraction.getFraction(64));
+        if (weight.getNumerator() % weight.getDenominator() == 0) {
+            return Text.literal(String.valueOf(weight.intValue()));
+        } else {
+            return Text.literal(String.format("%.2f", weight.floatValue()));
         }
     }
 }

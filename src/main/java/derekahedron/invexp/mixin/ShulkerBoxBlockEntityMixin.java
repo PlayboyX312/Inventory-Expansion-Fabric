@@ -1,6 +1,7 @@
 package derekahedron.invexp.mixin;
 
 import derekahedron.invexp.util.ContainerItemContents;
+import derekahedron.invexp.util.ContainerItemContentsReader;
 import net.minecraft.block.entity.ShulkerBoxBlockEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.Direction;
@@ -27,7 +28,7 @@ public class ShulkerBoxBlockEntityMixin {
             int slot, ItemStack stack, Direction dir, @NotNull CallbackInfoReturnable<Boolean> cir
     ) {
         if (cir.getReturnValue()) {
-            ContainerItemContents contents = ContainerItemContents.of(stack);
+            ContainerItemContentsReader contents = ContainerItemContents.of(stack);
             if (contents != null && !contents.isEmpty()) {
                 ShulkerBoxBlockEntity self = (ShulkerBoxBlockEntity) (Object) this;
                 for (ItemStack nestedStack : contents.getStacks()) {

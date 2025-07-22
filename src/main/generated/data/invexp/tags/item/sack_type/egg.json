@@ -1,0 +1,23 @@
+{
+  "values": [
+    "minecraft:frogspawn",
+    "minecraft:turtle_egg",
+    "minecraft:sniffer_egg",
+    "minecraft:dragon_egg",
+    "minecraft:egg",
+    "minecraft:brown_egg",
+    "minecraft:blue_egg",
+    {
+      "id": "biomesoplenty:spider_egg",
+      "required": false
+    },
+    {
+      "id": "wilderwild:ostrich_egg",
+      "required": false
+    },
+    {
+      "id": "wilderwild:penguin_egg",
+      "required": false
+    }
+  ]
+}

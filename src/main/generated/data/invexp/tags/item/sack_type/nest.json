@@ -1,0 +1,10 @@
+{
+  "values": [
+    "minecraft:bee_nest",
+    "minecraft:beehive",
+    {
+      "id": "wilderwild:termite_mound",
+      "required": false
+    }
+  ]
+}

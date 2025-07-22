@@ -4,6 +4,7 @@ import derekahedron.invexp.component.types.QuiverContentsComponent;
 import derekahedron.invexp.component.types.SackContentsComponent;
 import derekahedron.invexp.component.types.SackInsertableComponent;
 import derekahedron.invexp.sack.SackType;
+import derekahedron.invexp.util.InvExpCodecs;
 import derekahedron.invexp.util.InvExpUtil;
 import net.minecraft.component.ComponentType;
 import net.minecraft.network.codec.PacketCodecs;
@@ -11,35 +12,72 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.dynamic.Codecs;
+import org.apache.commons.lang3.math.Fraction;
 
 /**
  * Stores all Data Component Types for Inventory Expansion
  */
 public class InvExpDataComponentTypes {
-
-    public static final ComponentType<SackInsertableComponent> SACK_INSERTABLE;
-    public static final ComponentType<RegistryEntry<SackType>> SACK_TYPE;
-    public static final ComponentType<Integer> SACK_WEIGHT;
-    public static final ComponentType<Integer> MAX_SACK_TYPES;
-    public static final ComponentType<Integer> MAX_SACK_WEIGHT;
-    public static final ComponentType<Integer> MAX_SACK_STACKS;
-    public static final ComponentType<SackContentsComponent> SACK_CONTENTS;
-    public static final ComponentType<Integer> MAX_QUIVER_OCCUPANCY;
-    public static final ComponentType<Integer> MAX_QUIVER_STACKS;
-    public static final ComponentType<QuiverContentsComponent> QUIVER_CONTENTS;
-
-    static {
-        SACK_INSERTABLE = register("sack_insertable", ComponentType.<SackInsertableComponent>builder().codec(SackInsertableComponent.CODEC).packetCodec(SackInsertableComponent.PACKET_CODEC).build());
-        SACK_TYPE = register("sack_type", ComponentType.<RegistryEntry<SackType>>builder().codec(SackType.ENTRY_CODEC).packetCodec(SackType.ENTRY_PACKET_CODEC).build());
-        SACK_WEIGHT = register("sack_weight", ComponentType.<Integer>builder().codec(Codecs.NON_NEGATIVE_INT).packetCodec(PacketCodecs.VAR_INT).build());
-        MAX_SACK_TYPES = register("max_sack_types", ComponentType.<Integer>builder().codec(Codecs.NON_NEGATIVE_INT).packetCodec(PacketCodecs.VAR_INT).build());
-        MAX_SACK_WEIGHT = register("max_sack_weight", ComponentType.<Integer>builder().codec(Codecs.NON_NEGATIVE_INT).packetCodec(PacketCodecs.VAR_INT).build());
-        MAX_SACK_STACKS = register("max_sack_stacks", ComponentType.<Integer>builder().codec(Codecs.NON_NEGATIVE_INT).packetCodec(PacketCodecs.VAR_INT).build());
-        SACK_CONTENTS = register("sack_contents", ComponentType.<SackContentsComponent>builder().codec(SackContentsComponent.CODEC).packetCodec(SackContentsComponent.PACKET_CODEC).build());
-        MAX_QUIVER_OCCUPANCY = register("max_quiver_occupancy", ComponentType.<Integer>builder().codec(Codecs.NON_NEGATIVE_INT).packetCodec(PacketCodecs.VAR_INT).build());
-        MAX_QUIVER_STACKS = register("max_quiver_stacks", ComponentType.<Integer>builder().codec(Codecs.NON_NEGATIVE_INT).packetCodec(PacketCodecs.VAR_INT).build());
-        QUIVER_CONTENTS = register("quiver_contents", ComponentType.<QuiverContentsComponent>builder().codec(QuiverContentsComponent.CODEC).packetCodec(QuiverContentsComponent.PACKET_CODEC).build());
-    }
+    public static final ComponentType<SackInsertableComponent> SACK_INSERTABLE =
+            register("sack_insertable",
+                    ComponentType.<SackInsertableComponent>builder()
+                            .codec(SackInsertableComponent.CODEC)
+                            .packetCodec(SackInsertableComponent.PACKET_CODEC)
+                            .build());
+    public static final ComponentType<RegistryEntry<SackType>> SACK_TYPE =
+            register("sack_type",
+                    ComponentType.<RegistryEntry<SackType>>builder()
+                            .codec(SackType.ENTRY_CODEC)
+                            .packetCodec(SackType.ENTRY_PACKET_CODEC)
+                            .build());
+    public static final ComponentType<Fraction> SACK_WEIGHT =
+            register("sack_weight",
+                    ComponentType.<Fraction>builder()
+                            .codec(InvExpCodecs.NON_NEGATIVE_FRACTION)
+                            .packetCodec(InvExpCodecs.FRACTION_PACKET)
+                            .build());
+    public static final ComponentType<Integer> MAX_SACK_TYPES =
+            register("max_sack_types",
+                    ComponentType.<Integer>builder()
+                            .codec(Codecs.NON_NEGATIVE_INT)
+                            .packetCodec(PacketCodecs.VAR_INT)
+                            .build());
+    public static final ComponentType<Fraction> MAX_SACK_WEIGHT =
+            register("max_sack_weight",
+                    ComponentType.<Fraction>builder()
+                            .codec(InvExpCodecs.NON_NEGATIVE_FRACTION)
+                            .packetCodec(InvExpCodecs.FRACTION_PACKET)
+                            .build());
+    public static final ComponentType<Integer> MAX_SACK_STACKS =
+            register("max_sack_stacks",
+                    ComponentType.<Integer>builder()
+                            .codec(Codecs.NON_NEGATIVE_INT)
+                            .packetCodec(PacketCodecs.VAR_INT)
+                            .build());
+    public static final ComponentType<SackContentsComponent> SACK_CONTENTS =
+            register("sack_contents",
+                    ComponentType.<SackContentsComponent>builder()
+                            .codec(SackContentsComponent.CODEC)
+                            .packetCodec(SackContentsComponent.PACKET_CODEC)
+                            .build());
+    public static final ComponentType<Fraction> MAX_QUIVER_OCCUPANCY =
+            register("max_quiver_occupancy",
+                    ComponentType.<Fraction>builder()
+                            .codec(InvExpCodecs.NON_NEGATIVE_FRACTION)
+                            .packetCodec(InvExpCodecs.FRACTION_PACKET)
+                            .build());
+    public static final ComponentType<Integer> MAX_QUIVER_STACKS =
+            register("max_quiver_stacks",
+                    ComponentType.<Integer>builder()
+                            .codec(Codecs.NON_NEGATIVE_INT)
+                            .packetCodec(PacketCodecs.VAR_INT)
+                            .build());
+    public static final ComponentType<QuiverContentsComponent> QUIVER_CONTENTS =
+            register("quiver_contents",
+                    ComponentType.<QuiverContentsComponent>builder()
+                            .codec(QuiverContentsComponent.CODEC)
+                            .packetCodec(QuiverContentsComponent.PACKET_CODEC)
+                            .build());
 
     /**
      * Register an Inventory Expansion component type

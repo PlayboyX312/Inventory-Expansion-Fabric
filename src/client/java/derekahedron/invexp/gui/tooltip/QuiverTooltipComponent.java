@@ -1,7 +1,6 @@
 package derekahedron.invexp.gui.tooltip;
 
-import derekahedron.invexp.quiver.QuiverContents;
-import derekahedron.invexp.quiver.QuiverHelper;
+import derekahedron.invexp.quiver.QuiverContentsReader;
 import derekahedron.invexp.util.InvExpUtil;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
@@ -20,7 +19,7 @@ import java.util.List;
  *
  * @param contents  quiver contents to draw the tooltip from
  */
-public record QuiverTooltipComponent(QuiverContents contents) implements TooltipComponent, ContainerItemTooltipComponent {
+public record QuiverTooltipComponent(QuiverContentsReader contents) implements TooltipComponent, ContainerItemTooltipComponent {
     public static final Identifier QUIVER_PROGRESS_BAR_BORDER_TEXTURE = InvExpUtil.identifier("container/quiver/quiver_progressbar_border");
     public static final Identifier QUIVER_PROGRESS_BAR_FILL_TEXTURE = InvExpUtil.identifier("container/quiver/quiver_progressbar_fill");
     public static final Identifier QUIVER_PROGRESS_BAR_FULL_TEXTURE = InvExpUtil.identifier("container/quiver/quiver_progressbar_full");
@@ -113,11 +112,10 @@ public record QuiverTooltipComponent(QuiverContents contents) implements Tooltip
      * @return  empty quiver description text
      */
     public @NotNull Text getQuiverEmptyDescription() {
-        int maxStacks = QuiverHelper.getMaxQuiverOccupancyStacks(contents.quiverStack);
-        if (maxStacks != 1) {
-            return Text.translatable(QUIVER_EMPTY_DESCRIPTION_PLURAL, maxStacks);
-        }
-        else {
+        Fraction maxStacks = contents.getMaxQuiverOccupancy();
+        if (!maxStacks.equals(Fraction.ONE)) {
+            return Text.translatable(QUIVER_EMPTY_DESCRIPTION_PLURAL, maxStacks.toProperString());
+        } else {
             return QUIVER_EMPTY_DESCRIPTION;
         }
     }

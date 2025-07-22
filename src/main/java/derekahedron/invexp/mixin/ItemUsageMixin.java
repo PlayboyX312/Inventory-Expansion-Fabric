@@ -26,7 +26,7 @@ public class ItemUsageMixin {
     ) {
         if (player.isInCreativeMode()) {
             if (creativeOverride && player.getInventory().contains(stack -> {
-                SackContents contents = SackContents.of(stack);
+                SackContents contents = SackContents.of(stack, player.getWorld());
                 if (contents != null && !contents.isEmpty()) {
                     for (ItemStack nestedStack : contents.getStacks()) {
                         if (!nestedStack.isEmpty() && ItemStack.areItemsAndComponentsEqual(nestedStack, outputStack)) {
@@ -48,7 +48,7 @@ public class ItemUsageMixin {
         if (usage == null || !ItemStack.areItemsAndComponentsEqual(usage.originalSelectedStack, usage.selectedStack) || usage.originalSelectedStack.getCount() <= 1) {
             return;
         }
-        SackContents contents = SackContents.of(usage.sackStack);
+        SackContents contents = SackContents.of(usage.sackStack, player.getWorld());
         if (contents == null || contents.isEmpty()) {
             return;
         }

@@ -5,8 +5,8 @@ import derekahedron.invexp.component.types.SackContentsComponent;
 import net.minecraft.client.render.item.property.bool.BooleanProperty;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ItemDisplayContext;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ModelTransformationMode;
 import org.jetbrains.annotations.Nullable;
 
 /**
@@ -19,11 +19,10 @@ public class SackIsOpenProperty implements BooleanProperty {
      * Returns true if the stack is a sack and is rendered as open
      */
     @Override
-    public boolean getValue(
-            ItemStack sackStack, @Nullable ClientWorld world, @Nullable LivingEntity user,
-            int seed, ModelTransformationMode modelTransformationMode
-    ) {
-        SackContentsComponent component = SackContentsComponent.getComponent(sackStack);
+    public boolean test(
+            ItemStack stack, @Nullable ClientWorld world, @Nullable LivingEntity entity,
+            int seed, ItemDisplayContext displayContext) {
+        SackContentsComponent component = SackContentsComponent.getComponent(stack);
         return component != null && component.isOpen;
     }
 

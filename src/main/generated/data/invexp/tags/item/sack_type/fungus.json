@@ -1,0 +1,50 @@
+{
+  "values": [
+    "minecraft:brown_mushroom_block",
+    "minecraft:red_mushroom_block",
+    "#minecraft:wart_blocks",
+    "minecraft:shroomlight",
+    "minecraft:brown_mushroom",
+    "minecraft:red_mushroom",
+    "minecraft:crimson_fungus",
+    "minecraft:warped_fungus",
+    "minecraft:mushroom_stem",
+    "#c:mushrooms",
+    {
+      "id": "biomesoplenty:toadstool_block",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:glowshroom_block",
+      "required": false
+    },
+    {
+      "id": "wilderwild:pale_mushroom_block",
+      "required": false
+    },
+    {
+      "id": "wilderwild:pale_mushroom",
+      "required": false
+    },
+    {
+      "id": "wilderwild:brown_shelf_fungi",
+      "required": false
+    },
+    {
+      "id": "wilderwild:red_shelf_fungi",
+      "required": false
+    },
+    {
+      "id": "wilderwild:pale_shelf_fungi",
+      "required": false
+    },
+    {
+      "id": "wilderwild:crimson_shelf_fungi",
+      "required": false
+    },
+    {
+      "id": "wilderwild:warped_shelf_fungi",
+      "required": false
+    }
+  ]
+}

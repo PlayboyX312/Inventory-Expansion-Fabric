@@ -1,6 +1,7 @@
 package derekahedron.invexp.mixin.client;
 
 import derekahedron.invexp.sack.SackContents;
+import derekahedron.invexp.sack.SackContentsReader;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.render.item.HeldItemRenderer;
 import net.minecraft.item.ItemStack;
@@ -48,7 +49,7 @@ public class HeldItemRendererMixin {
             )
     )
     private static ItemStack isSackChargedCrossbow(ItemStack stack) {
-        SackContents contents = SackContents.of(stack);
+        SackContentsReader contents = SackContents.of(stack);
         if (contents == null || contents.isEmpty()) {
             return stack;
         }

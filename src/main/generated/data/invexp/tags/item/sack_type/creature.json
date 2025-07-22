@@ -1,0 +1,69 @@
+{
+  "values": [
+    "minecraft:slime_block",
+    "minecraft:resin_block",
+    "minecraft:ender_eye",
+    "minecraft:string",
+    "minecraft:ender_pearl",
+    "minecraft:rotten_flesh",
+    "minecraft:spider_eye",
+    "minecraft:bone",
+    "minecraft:feather",
+    "minecraft:leather",
+    "minecraft:rabbit_hide",
+    "minecraft:resin_clump",
+    "minecraft:ink_sac",
+    "minecraft:glow_ink_sac",
+    "minecraft:turtle_scute",
+    "minecraft:armadillo_scute",
+    "minecraft:slime_ball",
+    "minecraft:prismarine_shard",
+    "minecraft:prismarine_crystals",
+    "minecraft:nautilus_shell",
+    "minecraft:blaze_rod",
+    "minecraft:breeze_rod",
+    "minecraft:nether_star",
+    "minecraft:shulker_shell",
+    "minecraft:gunpowder",
+    "minecraft:fermented_spider_eye",
+    "minecraft:blaze_powder",
+    "minecraft:rabbit_foot",
+    "minecraft:magma_cream",
+    "minecraft:ghast_tear",
+    "minecraft:phantom_membrane",
+    "minecraft:creaking_heart",
+    "#c:bones",
+    "#c:leathers",
+    "#c:feathers",
+    "#c:rods/blaze",
+    "#c:rods/breeze",
+    {
+      "id": "trailiertales:ectoplasm_block",
+      "required": false
+    },
+    {
+      "id": "trailiertales:ectoplasm",
+      "required": false
+    },
+    {
+      "id": "#wilderwild:mesoglea",
+      "required": false
+    },
+    {
+      "id": "#wilderwild:nematocysts",
+      "required": false
+    },
+    {
+      "id": "wilderwild:crab_claw",
+      "required": false
+    },
+    {
+      "id": "wilderwild:fermented_scorched_eye",
+      "required": false
+    },
+    {
+      "id": "wilderwild:scorched_eye",
+      "required": false
+    }
+  ]
+}

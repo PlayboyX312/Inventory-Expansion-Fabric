@@ -1,0 +1,32 @@
+{
+  "values": [
+    {
+      "id": "storagedrawers:detached_drawer",
+      "required": false
+    },
+    {
+      "id": "#storagedrawers:drawers",
+      "required": false
+    },
+    {
+      "id": "storagedrawers:compacting_drawers_2",
+      "required": false
+    },
+    {
+      "id": "storagedrawers:compacting_drawers_3",
+      "required": false
+    },
+    {
+      "id": "storagedrawers:compacting_half_drawers_2",
+      "required": false
+    },
+    {
+      "id": "storagedrawers:compacting_half_drawers_3",
+      "required": false
+    },
+    {
+      "id": "#storagedrawers:trim",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "items": "#invexp:sack_weight/half",
+  "sack_weight": {
+    "denominator": 2,
+    "numerator": 1
+  }
+}

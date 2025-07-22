@@ -1,0 +1,32 @@
+{
+  "values": [
+    "minecraft:mud_bricks",
+    "minecraft:mud_brick_stairs",
+    "minecraft:mud_brick_slab",
+    "minecraft:mud_brick_wall",
+    {
+      "id": "wilderwild:cracked_mud_bricks",
+      "required": false
+    },
+    {
+      "id": "wilderwild:chiseled_mud_bricks",
+      "required": false
+    },
+    {
+      "id": "wilderwild:mossy_mud_bricks",
+      "required": false
+    },
+    {
+      "id": "wilderwild:mossy_mud_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "wilderwild:mossy_mud_brick_slab",
+      "required": false
+    },
+    {
+      "id": "wilderwild:mossy_mud_brick_wall",
+      "required": false
+    }
+  ]
+}

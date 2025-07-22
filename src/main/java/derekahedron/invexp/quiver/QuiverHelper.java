@@ -9,20 +9,8 @@ import org.jetbrains.annotations.NotNull;
  * Contains helper functions and default values for data components related to quivers.
  */
 public class QuiverHelper {
-    public static final int DEFAULT_MAX_QUIVER_OCCUPANCY = 0;
+    public static final Fraction DEFAULT_MAX_QUIVER_OCCUPANCY = Fraction.ZERO;
     public static final int DEFAULT_MAX_QUIVER_STACKS = 0;
-
-    /**
-     * Return the maximum number of total stacks that can occupy this quiver.
-     * The occupancy fraction is based off of this value, so a value of 8 would mean
-     * the quiver can hold 8 assorted stacks of arrows.
-     *
-     * @param stack     stack to test
-     * @return          maximum quiver occupancy stacks this item can hold as a quiver
-     */
-    public static int getMaxQuiverOccupancyStacks(@NotNull ItemStack stack) {
-        return stack.getOrDefault(InvExpDataComponentTypes.MAX_QUIVER_OCCUPANCY, DEFAULT_MAX_QUIVER_OCCUPANCY);
-    }
 
     /**
      * Return the maximum occupancy fraction this item can hold as a quiver.
@@ -31,7 +19,7 @@ public class QuiverHelper {
      * @return          maximum quiver occupancy this item can hold as a quiver
      */
     public static @NotNull Fraction getMaxQuiverOccupancy(@NotNull ItemStack stack) {
-        return Fraction.getFraction(getMaxQuiverOccupancyStacks(stack));
+        return stack.getOrDefault(InvExpDataComponentTypes.MAX_QUIVER_OCCUPANCY, DEFAULT_MAX_QUIVER_OCCUPANCY);
     }
 
     /**

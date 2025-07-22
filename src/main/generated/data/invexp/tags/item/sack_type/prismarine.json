@@ -1,0 +1,23 @@
+{
+  "values": [
+    "minecraft:sea_lantern",
+    "minecraft:prismarine",
+    "minecraft:prismarine_stairs",
+    "minecraft:prismarine_slab",
+    "minecraft:prismarine_wall",
+    "minecraft:prismarine_bricks",
+    "minecraft:prismarine_brick_stairs",
+    "minecraft:prismarine_brick_slab",
+    "minecraft:dark_prismarine",
+    "minecraft:dark_prismarine_stairs",
+    "minecraft:dark_prismarine_slab",
+    {
+      "id": "trailiertales:prismarine_brick_wall",
+      "required": false
+    },
+    {
+      "id": "trailiertales:dark_prismarine_wall",
+      "required": false
+    }
+  ]
+}

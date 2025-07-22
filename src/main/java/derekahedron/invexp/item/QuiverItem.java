@@ -1,10 +1,14 @@
 package derekahedron.invexp.item;
 
+import derekahedron.invexp.component.InvExpDataComponentTypes;
 import derekahedron.invexp.item.tooltip.QuiverTooltipData;
 import derekahedron.invexp.quiver.QuiverContents;
 import derekahedron.invexp.sound.InvExpSoundEvents;
 import derekahedron.invexp.util.InvExpUtil;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.TooltipDisplayComponent;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.StackReference;
@@ -13,11 +17,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsage;
 import net.minecraft.item.tooltip.TooltipData;
 import net.minecraft.screen.slot.Slot;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.ClickType;
 import net.minecraft.util.math.ColorHelper;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 
@@ -180,8 +185,7 @@ public class QuiverItem extends Item {
         QuiverContents contents = QuiverContents.of(quiverStack);
         if (contents == null || contents.getTotalOccupancy().compareTo(contents.getMaxQuiverOccupancy()) < 0) {
             return ITEM_BAR_COLOR;
-        }
-        else {
+        } else {
             return FULL_ITEM_BAR_COLOR;
         }
     }
@@ -194,7 +198,9 @@ public class QuiverItem extends Item {
      */
     @Override
     public Optional<TooltipData> getTooltipData(ItemStack quiverStack) {
-        if (InvExpUtil.shouldDisplayTooltip(quiverStack)) {
+        TooltipDisplayComponent tooltipDisplayComponent = quiverStack.getOrDefault(
+                DataComponentTypes.TOOLTIP_DISPLAY, TooltipDisplayComponent.DEFAULT);
+        if (tooltipDisplayComponent.shouldDisplay(InvExpDataComponentTypes.QUIVER_CONTENTS)) {
             // Return quiver tooltip data if the quiver contents are valid
             QuiverContents contents = QuiverContents.of(quiverStack);
             if (contents != null) {
@@ -225,10 +231,9 @@ public class QuiverItem extends Item {
      * @param world         world the stack is ticked in
      * @param entity        the entity holding the item; usually a player
      * @param slot          slot the item is in
-     * @param selected      whether the item is in the selected hotbar slot
      */
     @Override
-    public void inventoryTick(ItemStack quiverStack, World world, Entity entity, int slot, boolean selected) {
+    public void inventoryTick(ItemStack quiverStack, ServerWorld world, Entity entity, @Nullable EquipmentSlot slot) {
         if (entity instanceof PlayerEntity player) {
             QuiverContents contents = QuiverContents.of(quiverStack);
             if (contents == null) {
@@ -247,8 +252,7 @@ public class QuiverItem extends Item {
         entity.playSound(
                 InvExpSoundEvents.ITEM_QUIVER_REMOVE_ONE,
                 0.8F,
-                0.8F + entity.getWorld().getRandom().nextFloat() * 0.4F
-        );
+                0.8F + entity.getWorld().getRandom().nextFloat() * 0.4F);
     }
 
     /**
@@ -260,8 +264,7 @@ public class QuiverItem extends Item {
         entity.playSound(
                 InvExpSoundEvents.ITEM_QUIVER_INSERT,
                 0.8F,
-                0.8F + entity.getWorld().getRandom().nextFloat() * 0.4F
-        );
+                0.8F + entity.getWorld().getRandom().nextFloat() * 0.4F);
     }
 
     /**
@@ -271,9 +274,8 @@ public class QuiverItem extends Item {
      */
     public static void playInsertFailSound(@NotNull Entity entity) {
         entity.playSound(
-                InvExpSoundEvents.ITEM_SACK_INSERT_FAIL,
+                InvExpSoundEvents.ITEM_QUIVER_INSERT_FAIL,
                 1.0F,
-                1.0F
-        );
+                1.0F);
     }
 }

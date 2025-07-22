@@ -1,6 +1,7 @@
 package derekahedron.invexp.mixin.client;
 
-import derekahedron.invexp.sack.SackInsertableManager;
+import derekahedron.invexp.sack.SackDefaultManager;
+import derekahedron.invexp.util.ContainerItemContentsReader;
 import derekahedron.invexp.util.DataPackChangeDetector;
 import derekahedron.invexp.util.ContainerItemContents;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
@@ -21,8 +22,8 @@ public class ClientPlayNetworkHandlerMixin {
     /**
      * Item bobbing animation plays when the count of an item increases.
      * If comparing two containers, the count will always be one. So before comparing,
-     * we check if the contents has gained an item, and if so, we set the count of the old
-     * item stack to nothing so it will pass the count comparison.
+     * we check if the contents has gained an item, and if so, we manually set the
+     * bobbing animation of the new stack.
      */
     @Inject(
             method = "onScreenHandlerSlotUpdate",
@@ -33,13 +34,16 @@ public class ClientPlayNetworkHandlerMixin {
             ),
             locals = LocalCapture.CAPTURE_FAILSOFT
     )
-    private void changeCountBeforeComparison (
+    private void setContainerItemBobbingAnimation (
             ScreenHandlerSlotUpdateS2CPacket packet, @NotNull CallbackInfo ci,
             PlayerEntity playerEntity, ItemStack itemStack, int i,
             boolean bl, ItemStack itemStack2
     ) {
-        ContainerItemContents oldContents = ContainerItemContents.of(itemStack2);
-        ContainerItemContents newContents = ContainerItemContents.of(itemStack);
+        if (!ItemStack.areItemsEqual(itemStack, itemStack2)) {
+            return;
+        }
+        ContainerItemContentsReader oldContents = ContainerItemContents.of(itemStack2);
+        ContainerItemContentsReader newContents = ContainerItemContents.of(itemStack);
         if (oldContents == null || newContents == null) {
             return;
         }
@@ -52,7 +56,7 @@ public class ClientPlayNetworkHandlerMixin {
             newCount += stack.getCount();
         }
         if (newCount > oldCount) {
-            itemStack2.setCount(0);
+            itemStack.setBobbingAnimationTime(5);
         }
     }
 
@@ -67,7 +71,7 @@ public class ClientPlayNetworkHandlerMixin {
     private void afterSynchronizeTags(SynchronizeTagsS2CPacket packet, @NotNull CallbackInfo ci) {
         ClientPlayNetworkHandler self = (ClientPlayNetworkHandler) (Object) this;
         if (!self.connection.isLocal()) {
-            SackInsertableManager.updateInstanceTaggedInsertables();
+            SackDefaultManager.updateInstanceSackDefaults();
             DataPackChangeDetector.markDirty();
         }
     }

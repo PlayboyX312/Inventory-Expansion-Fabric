@@ -1,10 +1,15 @@
 package derekahedron.invexp.item;
 
+import derekahedron.invexp.component.InvExpDataComponentTypes;
 import derekahedron.invexp.item.tooltip.SackTooltipData;
 import derekahedron.invexp.sack.SackContents;
+import derekahedron.invexp.sack.SackContentsReader;
 import derekahedron.invexp.sound.InvExpSoundEvents;
 import derekahedron.invexp.util.InvExpUtil;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.TooltipDisplayComponent;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -13,11 +18,12 @@ import net.minecraft.item.*;
 import net.minecraft.item.consume.UseAction;
 import net.minecraft.item.tooltip.TooltipData;
 import net.minecraft.screen.slot.Slot;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.ClickType;
 import net.minecraft.util.math.ColorHelper;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 
@@ -51,7 +57,7 @@ public class SackItem extends Item {
     @Override
     public boolean onStackClicked(ItemStack sackStack, Slot slot, ClickType clickType, PlayerEntity player) {
         // Make sure this is actually a valid sack
-        SackContents contents = SackContents.of(sackStack);
+        SackContents contents = SackContents.of(sackStack, player.getWorld());
         if (contents == null) {
             return false;
         }
@@ -102,7 +108,7 @@ public class SackItem extends Item {
             PlayerEntity player, StackReference cursorStackReference
     ) {
         // Make sure this is actually a valid sack
-        SackContents contents = SackContents.of(sackStack);
+        SackContents contents = SackContents.of(sackStack, player.getWorld());
         if (contents == null) {
             return false;
         }
@@ -147,7 +153,7 @@ public class SackItem extends Item {
      */
     @Override
     public UseAction getUseAction(ItemStack sackStack) {
-        SackContents contents = SackContents.of(sackStack);
+        SackContentsReader contents = SackContents.of(sackStack);
         if (contents == null || contents.isEmpty()) {
             return super.getUseAction(sackStack);
         }
@@ -163,7 +169,7 @@ public class SackItem extends Item {
      */
     @Override
     public int getMaxUseTime(ItemStack sackStack, LivingEntity user) {
-        SackContents contents = SackContents.of(sackStack);
+        SackContentsReader contents = SackContents.of(sackStack);
         if (contents == null || contents.isEmpty()) {
             return super.getMaxUseTime(sackStack, user);
         }
@@ -178,7 +184,7 @@ public class SackItem extends Item {
      */
     @Override
     public boolean isItemBarVisible(ItemStack sackStack) {
-        SackContents contents = SackContents.of(sackStack);
+        SackContentsReader contents = SackContents.of(sackStack);
         return contents != null && !contents.isEmpty();
     }
 
@@ -190,7 +196,7 @@ public class SackItem extends Item {
      */
     @Override
     public int getItemBarStep(ItemStack sackStack) {
-        SackContents contents = SackContents.of(sackStack);
+        SackContentsReader contents = SackContents.of(sackStack);
         if (contents == null) {
             return 0;
         }
@@ -208,11 +214,10 @@ public class SackItem extends Item {
      */
     @Override
     public int getItemBarColor(ItemStack sackStack) {
-        SackContents contents = SackContents.of(sackStack);
-        if (contents != null && contents.getTotalWeight() < contents.getMaxSackWeight()) {
+        SackContentsReader contents = SackContents.of(sackStack);
+        if (contents == null || contents.getTotalWeight().compareTo(contents.getMaxSackWeight()) < 0) {
             return ITEM_BAR_COLOR;
-        }
-        else {
+        } else {
             return FULL_ITEM_BAR_COLOR;
         }
     }
@@ -225,9 +230,11 @@ public class SackItem extends Item {
      */
     @Override
     public Optional<TooltipData> getTooltipData(ItemStack sackStack) {
-        if (InvExpUtil.shouldDisplayTooltip(sackStack)) {
+        TooltipDisplayComponent tooltipDisplayComponent = sackStack.getOrDefault(
+                DataComponentTypes.TOOLTIP_DISPLAY, TooltipDisplayComponent.DEFAULT);
+        if (tooltipDisplayComponent.shouldDisplay(InvExpDataComponentTypes.SACK_CONTENTS)) {
             // Return sack tooltip data if the sack contents are valid
-            SackContents contents = SackContents.of(sackStack);
+            SackContentsReader contents = SackContents.of(sackStack);
             if (contents != null) {
                 return Optional.of(new SackTooltipData(contents));
             }
@@ -243,7 +250,7 @@ public class SackItem extends Item {
      */
     @Override
     public void onItemEntityDestroyed(@NotNull ItemEntity entity) {
-        SackContents contents = SackContents.of(entity.getStack());
+        SackContents contents = SackContents.of(entity.getStack(), entity.getWorld());
         if (contents == null || contents.isEmpty()) {
             return;
         }
@@ -258,12 +265,11 @@ public class SackItem extends Item {
      * @param world         world the stack is ticked in
      * @param entity        the entity holding the item; usually a player
      * @param slot          slot the item is in
-     * @param selected      whether the item is in the selected hotbar slot
      */
     @Override
-    public void inventoryTick(ItemStack sackStack, World world, Entity entity, int slot, boolean selected) {
+    public void inventoryTick(ItemStack sackStack, ServerWorld world, Entity entity, @Nullable EquipmentSlot slot) {
         if (entity instanceof PlayerEntity player) {
-            SackContents contents = SackContents.of(sackStack);
+            SackContents contents = SackContents.of(sackStack, world);
             if (contents == null) {
                 return;
             }
@@ -274,7 +280,7 @@ public class SackItem extends Item {
                 return;
             }
             ItemStack selectedStack = contents.copySelectedStack();
-            selectedStack.getItem().inventoryTick(selectedStack, world, entity, slot, selected);
+            selectedStack.getItem().inventoryTick(selectedStack, world, entity, slot);
             contents.updateSelectedStack(selectedStack, player::giveOrDropStack);
         }
     }

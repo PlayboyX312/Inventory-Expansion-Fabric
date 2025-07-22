@@ -9,7 +9,7 @@ import net.minecraft.block.DispenserBlock;
 public class InvExpDispenserBehavior {
 
     /**
-     * Adds dispenser behaviors for modded items
+     * Adds dispenser behaviors for Inventory Expansion items
      */
     public static void initialize() {
         DispenserBlock.registerBehavior(InvExpItems.SACK, new SackDispenserBehavior());

@@ -2,6 +2,9 @@ accessWidener	v2	named
 
 # COMMON
 
+# Allow checking fluid of bucket
+accessible field net/minecraft/item/BucketItem fluid Lnet/minecraft/fluid/Fluid;
+
 # Allow checking data when setting sack use on tracked data set
 accessible field net/minecraft/entity/LivingEntity LIVING_FLAGS Lnet/minecraft/entity/data/TrackedData;
 

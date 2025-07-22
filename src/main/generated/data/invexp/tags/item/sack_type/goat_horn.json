@@ -1,0 +1,9 @@
+{
+  "values": [
+    "minecraft:goat_horn",
+    {
+      "id": "wilderwild:copper_horn",
+      "required": false
+    }
+  ]
+}

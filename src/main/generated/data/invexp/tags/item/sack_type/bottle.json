@@ -1,0 +1,15 @@
+{
+  "values": [
+    "minecraft:ominous_bottle",
+    "minecraft:glass_bottle",
+    "minecraft:experience_bottle",
+    {
+      "id": "wilderwild:firefly_bottle",
+      "required": false
+    },
+    {
+      "id": "wilderwild:butterfly_bottle",
+      "required": false
+    }
+  ]
+}

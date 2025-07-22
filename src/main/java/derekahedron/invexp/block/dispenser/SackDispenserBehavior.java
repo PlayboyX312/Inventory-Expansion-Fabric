@@ -7,6 +7,7 @@ import net.minecraft.block.dispenser.DispenserBehavior;
 import net.minecraft.block.dispenser.FallibleItemDispenserBehavior;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPointer;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,16 +17,9 @@ import java.util.List;
  */
 public class SackDispenserBehavior extends FallibleItemDispenserBehavior {
 
-    /**
-     * Dispenser behavior for sacks
-     *
-     * @param pointer Pointer to the dispenser
-     * @param stack Sack stack that is being dispensed
-     * @return Sack stack after dispense
-     */
     @Override
-    public ItemStack dispense(BlockPointer pointer, ItemStack stack) {
-        SackContents contents = SackContents.of(stack);
+    public ItemStack dispense(@NotNull BlockPointer pointer, ItemStack stack) {
+        SackContents contents = SackContents.of(stack, pointer.world());
         // Fail dispense if invalid or empty
         if (contents == null || contents.isEmpty()) {
             setSuccess(false);

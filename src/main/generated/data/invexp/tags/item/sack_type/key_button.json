@@ -1,0 +1,16 @@
+{
+  "values": [
+    {
+      "id": "storagedrawers:keybutton_drawer",
+      "required": false
+    },
+    {
+      "id": "storagedrawers:keybutton_quantify",
+      "required": false
+    },
+    {
+      "id": "storagedrawers:keybutton_concealment",
+      "required": false
+    }
+  ]
+}

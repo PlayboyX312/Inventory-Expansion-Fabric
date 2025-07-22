@@ -14,12 +14,15 @@ import net.minecraft.server.network.ServerPlayNetworkHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ServerPlayNetworkHandler.class)
 public class ServerPlayNetworkHandlerMixin {
+
+    @Shadow public ServerPlayerEntity player;
 
     /**
      * Start player using sack before they release hold on an item.
@@ -145,13 +148,13 @@ public class ServerPlayNetworkHandlerMixin {
         }
 
         PlayerInventory inventory = player.getInventory();
-        SackContents contents = SackContents.of(inventory.getStack(inventory.selectedSlot));
+        SackContents contents = SackContents.of(inventory.getStack(inventory.getSelectedSlot()), player.getWorld());
         if (contents != null && !contents.isEmpty()) {
             int newSelectedIndex = contents.indexOf(stack, contents.getSelectedIndex());
             if (newSelectedIndex != -1) {
                 contents.setSelectedIndex(newSelectedIndex);
                 // Tell client that the slot was updated
-                player.networkHandler.sendPacket(new UpdateSelectedSlotS2CPacket(inventory.selectedSlot));
+                player.networkHandler.sendPacket(new UpdateSelectedSlotS2CPacket(inventory.getSelectedSlot()));
                 player.playerScreenHandler.sendContentUpdates();
                 ci.cancel();
             }

@@ -1,6 +1,7 @@
 package derekahedron.invexp.mixin;
 
 import derekahedron.invexp.sack.SackContents;
+import derekahedron.invexp.sack.SackContentsReader;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.FireworkRocketEntity;
 import net.minecraft.item.Items;
@@ -28,7 +29,7 @@ public class FireworkRocketEntityMixin {
     private void setProperVect(Args args) {
         FireworkRocketEntity self = (FireworkRocketEntity) (Object) this;
         if (self.shooter instanceof PlayerEntity player && player.isGliding()) {
-            SackContents contents = SackContents.of(player.getOffHandStack());
+            SackContentsReader contents = SackContents.of(player.getOffHandStack());
             // If the offhand selected stack is a firework but the main hand selected stack is not update args
             // so the position is at the offhand.
             if (contents != null &&

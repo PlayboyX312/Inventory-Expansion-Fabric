@@ -5,8 +5,8 @@ import derekahedron.invexp.quiver.QuiverContents;
 import net.minecraft.client.render.item.property.bool.BooleanProperty;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ItemDisplayContext;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ModelTransformationMode;
 import org.jetbrains.annotations.Nullable;
 
 /**
@@ -19,11 +19,10 @@ public class QuiverHasContentsProperty implements BooleanProperty {
      * Returns true if the stack is a quiver and has contents
      */
     @Override
-    public boolean getValue(
-            ItemStack quiverStack, @Nullable ClientWorld world, @Nullable LivingEntity user,
-            int seed, ModelTransformationMode modelTransformationMode
-    ) {
-        QuiverContents contents = QuiverContents.of(quiverStack);
+    public boolean test(
+            ItemStack stack, @Nullable ClientWorld world, @Nullable LivingEntity entity,
+            int seed, ItemDisplayContext displayContext) {
+        QuiverContents contents = QuiverContents.of(stack);
         return contents != null && !contents.isEmpty();
     }
 

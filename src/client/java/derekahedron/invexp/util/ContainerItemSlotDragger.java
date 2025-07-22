@@ -1,7 +1,9 @@
 package derekahedron.invexp.util;
 
 import derekahedron.invexp.quiver.QuiverContents;
+import derekahedron.invexp.sack.ImmutableSackContents;
 import derekahedron.invexp.sack.SackContents;
+import derekahedron.invexp.sack.SackContentsReader;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.BundleContentsComponent;
@@ -24,9 +26,9 @@ public abstract class ContainerItemSlotDragger {
      * @return          new dragger from the given stack; null if stack cannot be dragged
      */
     public static @Nullable ContainerItemSlotDragger of(ItemStack stack) {
-        ContainerItemContents contents = ContainerItemContents.of(stack);
+        ContainerItemContentsReader contents = ContainerItemContents.of(stack);
         // First check if item is a sack
-        if (contents instanceof SackContents sackContents) {
+        if (contents instanceof ImmutableSackContents sackContents) {
             return new SackSlotDragger(sackContents.sackStack);
         }
         // Second check if item is a quiver
@@ -133,7 +135,7 @@ public abstract class ContainerItemSlotDragger {
          */
         @Override
         public boolean isEmpty() {
-            SackContents contents = SackContents.of(sackStack);
+            SackContentsReader contents = SackContents.of(sackStack);
             return contents == null || contents.isEmpty();
         }
 
@@ -142,7 +144,7 @@ public abstract class ContainerItemSlotDragger {
          */
         @Override
         public boolean canTryInsert(ItemStack stack) {
-            SackContents contents = SackContents.of(sackStack);
+            SackContentsReader contents = SackContents.of(sackStack);
             return contents != null && contents.canTryInsert(stack);
         }
     }

@@ -6,7 +6,7 @@ import derekahedron.invexp.sack.SackContents;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.slot.Slot;
-import org.apache.commons.lang3.math.Fraction;
+import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -21,7 +21,7 @@ import java.util.stream.Stream;
  * If a modification can happen, a builder is created (which copies the items when created and applied)
  * where the modifications occur, so we are only creating the builder when necessary.
  */
-public abstract class ContainerItemContents implements ContainerItemContentsChecker {
+public abstract class ContainerItemContents implements ContainerItemContentsReader {
 
     /**
      * Create a Contents object from the given stack based on the stack that is passed in.
@@ -31,49 +31,24 @@ public abstract class ContainerItemContents implements ContainerItemContentsChec
      * @param stack     stack to create contents from if possible
      * @return          contents created from the stack; null if none are created
      */
-    public static @Nullable ContainerItemContents of(@Nullable ItemStack stack) {
-        ContainerItemContents contents;
+    public static @Nullable ContainerItemContentsReader of(@Nullable ItemStack stack) {
+        ContainerItemContentsReader contents;
         if ((contents = SackContents.of(stack)) != null) {
             return contents;
-        }
-        else if ((contents = QuiverContents.of(stack)) != null) {
+        } else if ((contents = QuiverContents.of(stack)) != null) {
             return contents;
         }
         return null;
     }
 
-    /**
-     * Copies the selected stack so it can be used.
-     *
-     * @return  a copy of the selected stack
-     */
-    public @NotNull ItemStack copySelectedStack() {
-        return copySelectedStack(null);
-    }
-
-    /**
-     * Copies the selected stack. If the current stack matches the existing stack,
-     * instead of copying, sets the count of the passed in stack.
-     * This is so the ItemStack object can be the same instance, which is useful in cases like
-     * checking for the active item stack.
-     *
-     * @param currentSelectedStack  selected stack to transform
-     * @return                      copy of the selected stack to modify
-     */
-    public @NotNull ItemStack copySelectedStack(@Nullable ItemStack currentSelectedStack) {
-        if (isEmpty()) {
-            return ItemStack.EMPTY;
+    public static @Nullable ContainerItemContents of(@Nullable ItemStack stack, @NotNull World world) {
+        ContainerItemContents contents;
+        if ((contents = SackContents.of(stack, world)) != null) {
+            return contents;
+        } else if ((contents = QuiverContents.of(stack)) != null) {
+            return contents;
         }
-        else {
-            ItemStack selectedStack = getSelectedStack();
-            if (currentSelectedStack != null && ItemStack.areItemsAndComponentsEqual(selectedStack, currentSelectedStack)) {
-                currentSelectedStack.setCount(selectedStack.getCount());
-                return currentSelectedStack;
-            }
-            else {
-                return selectedStack.copy();
-            }
-        }
+        return null;
     }
 
     /**
@@ -117,7 +92,7 @@ public abstract class ContainerItemContents implements ContainerItemContentsChec
         // Do not create builder until needed
         Builder builder = null;
         // Default to using this as the contents checker
-        ContainerItemContentsChecker checker = this;
+        ContainerItemContentsReader checker = this;
         int added = 0;
 
         for (Slot slot : slots.toList()) {
@@ -349,30 +324,16 @@ public abstract class ContainerItemContents implements ContainerItemContentsChec
     }
 
     /**
-     * Test for if the contents should show as full. Either by weight or stacks.
-     *
-     * @return  true if the contents should render as full
-     */
-    public abstract boolean isFull();
-
-    /**
-     * Gets a fraction for displaying fullness of contents.
-     *
-     * @return  fraction representing fullness
-     */
-    public abstract @NotNull Fraction getFillFraction();
-
-    /**
      * Create a new builder for modifying contents.
      *
-     * @return  builder for contents
+     * @return a builder that can modify this container contents
      */
     public abstract @NotNull Builder getBuilder();
 
     /**
      * Builder for modifying contents. Changes made do not take effect until the builder is applied.
      */
-    public abstract static class Builder implements ContainerItemContentsChecker {
+    public abstract static class Builder implements ContainerItemContentsReader {
         /**
          * Applies changes made to the original contents and container stack.
          */

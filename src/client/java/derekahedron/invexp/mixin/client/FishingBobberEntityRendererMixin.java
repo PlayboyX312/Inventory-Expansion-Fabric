@@ -25,7 +25,7 @@ public class FishingBobberEntityRendererMixin {
             cancellable = true
     )
     private static void getArmHoldingRod(@NotNull PlayerEntity player, @NotNull CallbackInfoReturnable<Arm> cir) {
-        SackContents contents = SackContents.of(player.getMainHandStack());
+        SackContents contents = SackContents.of(player.getMainHandStack(), player.getWorld());
         if (contents != null && !contents.isEmpty() && contents.getSelectedStack().getItem() instanceof FishingRodItem) {
             cir.setReturnValue(player.getMainArm());
         }

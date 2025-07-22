@@ -1,6 +1,7 @@
 package derekahedron.invexp.mixin;
 
 import derekahedron.invexp.sack.SackContents;
+import derekahedron.invexp.sack.SackContentsReader;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.EntityShapeContext;
 import net.minecraft.block.ScaffoldingBlock;
@@ -32,7 +33,7 @@ public class ScaffoldingBlockMixin {
             @NotNull CallbackInfoReturnable<VoxelShape> cir
     ) {
         if (context instanceof EntityShapeContext shapeContext) {
-            SackContents contents = SackContents.of(shapeContext.heldItem);
+            SackContentsReader contents = SackContents.of(shapeContext.heldItem);
             if (contents != null && !contents.isEmpty() && contents.getSelectedStack().isOf(state.getBlock().asItem())) {
                 cir.setReturnValue(VoxelShapes.fullCube());
             }
