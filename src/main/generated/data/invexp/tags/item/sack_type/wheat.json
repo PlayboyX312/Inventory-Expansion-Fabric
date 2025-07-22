@@ -1,0 +1,8 @@
+{
+  "values": [
+    "minecraft:hay_block",
+    "minecraft:wheat",
+    "#c:storage_blocks/wheat",
+    "#c:crops/wheat"
+  ]
+}

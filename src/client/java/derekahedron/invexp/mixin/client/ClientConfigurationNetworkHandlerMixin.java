@@ -1,7 +1,7 @@
 package derekahedron.invexp.mixin.client;
 
 import com.llamalad7.mixinextras.sugar.Local;
-import derekahedron.invexp.sack.SackInsertableManager;
+import derekahedron.invexp.sack.SackDefaultManager;
 import derekahedron.invexp.util.DataPackChangeDetector;
 import net.minecraft.client.network.ClientConfigurationNetworkHandler;
 import net.minecraft.network.packet.s2c.config.ReadyS2CPacket;
@@ -23,7 +23,7 @@ public class ClientConfigurationNetworkHandlerMixin {
             method = "onReady",
             at = @At(
                     value = "INVOKE",
-                    target = "Lnet/minecraft/network/ClientConnection;transitionInbound(Lnet/minecraft/network/NetworkState;Lnet/minecraft/network/listener/PacketListener;)V"
+                    target = "Lnet/minecraft/network/ClientConnection;transitionInbound(Lnet/minecraft/network/state/NetworkState;Lnet/minecraft/network/listener/PacketListener;)V"
             )
     )
     private void afterReady(
@@ -31,7 +31,7 @@ public class ClientConfigurationNetworkHandlerMixin {
     ) {
         ClientConfigurationNetworkHandler self = (ClientConfigurationNetworkHandler) (Object) this;
         if (!self.connection.isLocal()) {
-            SackInsertableManager.createNewInstance(immutable);
+            SackDefaultManager.createNewInstance(immutable);
             DataPackChangeDetector.markDirty();
         }
     }

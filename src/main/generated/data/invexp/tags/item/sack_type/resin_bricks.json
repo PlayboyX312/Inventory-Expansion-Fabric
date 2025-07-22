@@ -1,0 +1,35 @@
+{
+  "values": [
+    "minecraft:resin_bricks",
+    "minecraft:resin_brick_stairs",
+    "minecraft:resin_brick_slab",
+    "minecraft:resin_brick_wall",
+    "minecraft:chiseled_resin_bricks",
+    "minecraft:resin_brick",
+    "#c:bricks/resin",
+    {
+      "id": "trailiertales:polished_resin_block",
+      "required": false
+    },
+    {
+      "id": "trailiertales:cracked_resin_bricks",
+      "required": false
+    },
+    {
+      "id": "trailiertales:pale_mossy_resin_bricks",
+      "required": false
+    },
+    {
+      "id": "trailiertales:pale_mossy_resin_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "trailiertales:pale_mossy_resin_brick_slab",
+      "required": false
+    },
+    {
+      "id": "trailiertales:pale_mossy_resin_brick_wall",
+      "required": false
+    }
+  ]
+}

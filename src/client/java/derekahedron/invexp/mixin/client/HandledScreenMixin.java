@@ -1,7 +1,7 @@
 package derekahedron.invexp.mixin.client;
 
 import derekahedron.invexp.component.types.SackContentsComponent;
-import derekahedron.invexp.sack.SackContents;
+import derekahedron.invexp.sack.ImmutableSackContents;
 import derekahedron.invexp.util.ContainerItemSlotDragger;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
@@ -137,7 +137,7 @@ public class HandledScreenMixin {
             return;
         }
         ItemStack cursorStack = self.getScreenHandler().getCursorStack();
-        SackContents contents = SackContents.of(stack);
+        ImmutableSackContents contents = ImmutableSackContents.of(stack);
         // Do not display as open if the sack is empty or if you cannot insert a non-empty cursor stack
         if (contents == null || contents.isEmpty() || (!cursorStack.isEmpty() && !contents.canTryInsert(cursorStack))) {
             return;

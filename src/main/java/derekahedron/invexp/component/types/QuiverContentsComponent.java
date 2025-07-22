@@ -5,7 +5,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import derekahedron.invexp.component.InvExpDataComponentTypes;
 import derekahedron.invexp.item.QuiverItem;
 import derekahedron.invexp.quiver.QuiverHelper;
-import derekahedron.invexp.sack.SackInsertableManager;
+import derekahedron.invexp.sack.SackDefaultManager;
 import derekahedron.invexp.util.DataPackChangeDetector;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.RegistryByteBuf;
@@ -185,7 +185,7 @@ public class QuiverContentsComponent {
             totalOccupancy = Fraction.ZERO;
             isValid = true;
 
-            if (SackInsertableManager.getInstance() == null) {
+            if (SackDefaultManager.getInstance() == null) {
                 isValid = false;
                 return;
             }

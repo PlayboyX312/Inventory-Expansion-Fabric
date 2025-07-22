@@ -4,23 +4,25 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import derekahedron.invexp.component.InvExpDataComponentTypes;
 import derekahedron.invexp.item.SackItem;
-import derekahedron.invexp.sack.SackInsertableManager;
+import derekahedron.invexp.sack.SackDefaultManager;
 import derekahedron.invexp.sack.SackType;
 import derekahedron.invexp.sack.SacksHelper;
-import derekahedron.invexp.registry.DecentralizedReference;
 import derekahedron.invexp.util.DataPackChangeDetector;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.RegistryByteBuf;
 import net.minecraft.network.codec.PacketCodec;
 import net.minecraft.network.codec.PacketCodecs;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
+import org.apache.commons.lang3.math.Fraction;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Stores data for sack contents: stacks, selected index, and sack types. Data is immutable,
@@ -34,6 +36,7 @@ public class SackContentsComponent {
     public static final SackContentsComponent EMPTY_OPEN;
 
     public final List<RegistryEntry<SackType>> sackTypes;
+    public final List<RegistryKey<SackType>> sackTypeKeys;
     public final List<ItemStack> stacks;
     public final int selectedIndex;
     private final ExtraData extraData;
@@ -52,7 +55,17 @@ public class SackContentsComponent {
     public SackContentsComponent(
             @NotNull List<RegistryEntry<SackType>> sackTypes, @NotNull List<ItemStack> stacks, int selectedIndex
     ) {
+        this(
+                sackTypes.stream().filter((sackType) -> sackType.getKey().isPresent()).toList(),
+                sackTypes.stream().map(RegistryEntry::getKey).filter(Optional::isPresent).map(Optional::get).toList(),
+                stacks, selectedIndex);
+    }
+
+    public SackContentsComponent(
+            @NotNull List<RegistryEntry<SackType>> sackTypes, @NotNull List<RegistryKey<SackType>> sackTypeKeys, @NotNull List<ItemStack> stacks, int selectedIndex
+    ) {
         this.sackTypes = sackTypes;
+        this.sackTypeKeys = sackTypeKeys;
         this.stacks = stacks;
         this.selectedIndex = selectedIndex;
         this.extraData = new ExtraData();
@@ -72,6 +85,10 @@ public class SackContentsComponent {
      */
     public @NotNull List<RegistryEntry<SackType>> getSackTypes() {
         return sackTypes;
+    }
+
+    public @NotNull List<RegistryKey<SackType>> getSackTypeKeys() {
+        return sackTypeKeys;
     }
 
     /**
@@ -97,7 +114,7 @@ public class SackContentsComponent {
      *
      * @return  total weight of the component
      */
-    public int getTotalWeight() {
+    public Fraction getTotalWeight() {
         extraData.sync();
         return extraData.totalWeight;
     }
@@ -156,7 +173,7 @@ public class SackContentsComponent {
             }
             // Then check sack types stored
             for (int i = 0; i < sackTypes.size(); i++) {
-                if (!DecentralizedReference.referencesEqual(sackTypes.get(i), component.sackTypes.get(i))) {
+                if (sackTypes.get(i) != component.sackTypes.get(i)) {
                     return false;
                 }
             }
@@ -176,9 +193,12 @@ public class SackContentsComponent {
 
     static {
         CODEC = RecordCodecBuilder.create(instance -> instance.group(
-                SackType.ENTRY_CODEC.listOf().fieldOf("types").forGetter(SackContentsComponent::getSackTypes),
-                ItemStack.CODEC.listOf().fieldOf("contents").forGetter(SackContentsComponent::getStacks),
-                Codec.INT.optionalFieldOf("selected_index", -1).forGetter(SackContentsComponent::getSelectedIndex)
+                SackType.ENTRY_CODEC.listOf().optionalFieldOf("sack_types", List.of())
+                        .forGetter(SackContentsComponent::getSackTypes),
+                ItemStack.CODEC.listOf().fieldOf("contents")
+                        .forGetter(SackContentsComponent::getStacks),
+                Codec.INT.optionalFieldOf("selected_index", -1)
+                        .forGetter(SackContentsComponent::getSelectedIndex)
         ).apply(instance, SackContentsComponent::new));
         PACKET_CODEC = PacketCodec.tuple(
                 SackType.ENTRY_PACKET_CODEC.collect(PacketCodecs.toList()), SackContentsComponent::getSackTypes,
@@ -200,8 +220,7 @@ public class SackContentsComponent {
     public static @Nullable SackContentsComponent getComponent(@Nullable ItemStack stack) {
         if (stack != null && !stack.isEmpty() && stack.getItem() instanceof SackItem) {
             return stack.get(InvExpDataComponentTypes.SACK_CONTENTS);
-        }
-        else {
+        } else {
             return null;
         }
     }
@@ -210,7 +229,7 @@ public class SackContentsComponent {
      * Stores validity and total weight of the component. Both are reliant on the DataPack values.
      */
     private class ExtraData extends DataPackChangeDetector {
-        int totalWeight;
+        Fraction totalWeight;
         boolean isValid;
 
         /**
@@ -218,10 +237,10 @@ public class SackContentsComponent {
          */
         @Override
         public void evaluate() {
-            totalWeight = 0;
+            totalWeight = Fraction.ZERO;
             isValid = true;
 
-            if (SackInsertableManager.getInstance() == null) {
+            if (SackDefaultManager.getInstance() == null) {
                 isValid = false;
                 return;
             }
@@ -229,10 +248,10 @@ public class SackContentsComponent {
             // Because references can be decentralized, we use identifiers to check for type equality
             HashSet<Identifier> typeIdsInSack = new HashSet<>();
             HashSet<Identifier> typeIds = new HashSet<>(
-                    getSackTypes().stream().map(SacksHelper::getSackTypeIdentifier).filter(Objects::nonNull).toList()
+                    getSackTypeKeys().stream().map(RegistryKey::getValue).filter(Objects::nonNull).toList()
             );
             for (ItemStack stack : stacks) {
-                totalWeight += SacksHelper.getSackWeightOfStack(stack);
+                totalWeight = totalWeight.add(SacksHelper.getSackWeightOfStack(stack));
                 // Make sure type exists and is in component
                 Identifier typeId = SacksHelper.getSackTypeIdentifier(stack);
                 if (typeId != null) {

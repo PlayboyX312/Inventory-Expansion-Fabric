@@ -1,0 +1,5 @@
+// 1.21.5	-999999999-01-01T00:00:00	Inventory Expansion/Inventory Expansion Recipes
+545349c48920f0aad35fa0426cfe30e1420cdfd9 data/invexp/advancement/recipes/tools/quiver.json
+c45bd78620cef3a019bedc58fda02d14504c3966 data/invexp/advancement/recipes/tools/sack.json
+b2ca57f6b2adb29b3596103fb7ad0acf0493e0b6 data/invexp/recipe/quiver.json
+8745244e991f591a643fb5554f141d3a446a8b7b data/invexp/recipe/sack.json

@@ -1,0 +1,272 @@
+{
+  "values": [
+    "minecraft:moss_block",
+    "minecraft:moss_carpet",
+    "minecraft:pale_moss_block",
+    "minecraft:pale_moss_carpet",
+    "minecraft:pale_hanging_moss",
+    "#minecraft:leaves",
+    "#minecraft:saplings",
+    "#minecraft:flowers",
+    "#minecraft:small_flowers",
+    "minecraft:short_grass",
+    "minecraft:fern",
+    "minecraft:short_dry_grass",
+    "minecraft:bush",
+    "minecraft:dead_bush",
+    "minecraft:leaf_litter",
+    "minecraft:firefly_bush",
+    "minecraft:sugar_cane",
+    "minecraft:cactus",
+    "minecraft:crimson_roots",
+    "minecraft:warped_roots",
+    "minecraft:nether_sprouts",
+    "minecraft:weeping_vines",
+    "minecraft:twisting_vines",
+    "minecraft:vine",
+    "minecraft:tall_grass",
+    "minecraft:large_fern",
+    "minecraft:tall_dry_grass",
+    "minecraft:big_dripleaf",
+    "minecraft:small_dripleaf",
+    "minecraft:chorus_plant",
+    "minecraft:glow_lichen",
+    "minecraft:hanging_roots",
+    "minecraft:frogspawn",
+    "minecraft:lily_pad",
+    "minecraft:seagrass",
+    "#c:flowers",
+    "#c:flowers/small",
+    "#c:flowers/tall",
+    "#c:crops/sugar_cane",
+    "#c:crops/cactus",
+    {
+      "id": "biomesoplenty:glowing_moss_block",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:glowing_moss_carpet",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:red_maple_leaf_litter",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:orange_maple_leaf_litter",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:yellow_maple_leaf_litter",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:willow_vine",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:spanish_moss",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:sprout",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:high_grass",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:clover",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:huge_clover_petal",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:huge_lily_pad",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:waterlily",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:dune_grass",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:desert_grass",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:dead_grass",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:tundra_shrub",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:enderphyte",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:lumaloop",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:barley",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:sea_oats",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:cattail",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:reed",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:watergrass",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:tiny_cactus",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:bramble",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:bramble_leaves",
+      "required": false
+    },
+    {
+      "id": "trailiertales:cyan_rose",
+      "required": false
+    },
+    {
+      "id": "trailiertales:manedrop",
+      "required": false
+    },
+    {
+      "id": "trailiertales:dawntrail",
+      "required": false
+    },
+    {
+      "id": "wilderwild:auburn_moss_block",
+      "required": false
+    },
+    {
+      "id": "wilderwild:auburn_moss_carpet",
+      "required": false
+    },
+    {
+      "id": "wilderwild:auburn_creeping_moss",
+      "required": false
+    },
+    {
+      "id": "wilderwild:clovers",
+      "required": false
+    },
+    {
+      "id": "wilderwild:frozen_short_grass",
+      "required": false
+    },
+    {
+      "id": "wilderwild:frozen_fern",
+      "required": false
+    },
+    {
+      "id": "wilderwild:frozen_bush",
+      "required": false
+    },
+    {
+      "id": "wilderwild:phlox",
+      "required": false
+    },
+    {
+      "id": "wilderwild:lantanas",
+      "required": false
+    },
+    {
+      "id": "wilderwild:yellow_maple_leaf_litter",
+      "required": false
+    },
+    {
+      "id": "wilderwild:orange_maple_leaf_litter",
+      "required": false
+    },
+    {
+      "id": "wilderwild:red_maple_leaf_litter",
+      "required": false
+    },
+    {
+      "id": "wilderwild:tumbleweed_plant",
+      "required": false
+    },
+    {
+      "id": "wilderwild:tumbleweed",
+      "required": false
+    },
+    {
+      "id": "wilderwild:shrub",
+      "required": false
+    },
+    {
+      "id": "wilderwild:mycelium_growth",
+      "required": false
+    },
+    {
+      "id": "wilderwild:frozen_tall_grass",
+      "required": false
+    },
+    {
+      "id": "wilderwild:frozen_large_fern",
+      "required": false
+    },
+    {
+      "id": "wilderwild:datura",
+      "required": false
+    },
+    {
+      "id": "wilderwild:milkweed",
+      "required": false
+    },
+    {
+      "id": "wilderwild:cattail",
+      "required": false
+    },
+    {
+      "id": "wilderwild:pollen",
+      "required": false
+    },
+    {
+      "id": "wilderwild:algae",
+      "required": false
+    },
+    {
+      "id": "wilderwild:plankton",
+      "required": false
+    },
+    {
+      "id": "wilderwild:flowering_lily_pad",
+      "required": false
+    },
+    {
+      "id": "wilderwild:sea_whip",
+      "required": false
+    },
+    {
+      "id": "wilderwild:milkweed_pod",
+      "required": false
+    }
+  ]
+}

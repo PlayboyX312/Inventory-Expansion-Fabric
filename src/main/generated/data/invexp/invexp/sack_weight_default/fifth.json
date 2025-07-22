@@ -1,0 +1,7 @@
+{
+  "items": "#invexp:sack_weight/fifth",
+  "sack_weight": {
+    "denominator": 5,
+    "numerator": 1
+  }
+}

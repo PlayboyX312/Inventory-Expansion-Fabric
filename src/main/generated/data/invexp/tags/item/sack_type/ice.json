@@ -1,0 +1,15 @@
+{
+  "values": [
+    "minecraft:ice",
+    "minecraft:packed_ice",
+    "minecraft:blue_ice",
+    {
+      "id": "wilderwild:fragile_ice",
+      "required": false
+    },
+    {
+      "id": "wilderwild:icicle",
+      "required": false
+    }
+  ]
+}

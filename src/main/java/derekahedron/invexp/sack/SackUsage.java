@@ -1,6 +1,7 @@
 package derekahedron.invexp.sack;
 
 import derekahedron.invexp.InventoryExpansion;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -24,7 +25,7 @@ public class SackUsage {
      *
      * @param contents  contents to create the usage from
      */
-    public SackUsage(@NotNull SackContents contents) {
+    public SackUsage(@NotNull SackContentsReader contents) {
         this(contents, null);
     }
 
@@ -35,8 +36,8 @@ public class SackUsage {
      * @param contents                  contents to create the usage from
      * @param previousSelectedStack     existing selected stack to possibly carry over from
      */
-    public SackUsage(@NotNull SackContents contents, @Nullable ItemStack previousSelectedStack) {
-        sackStack = contents.sackStack;
+    public SackUsage(@NotNull SackContentsReader contents, @Nullable ItemStack previousSelectedStack) {
+        sackStack = contents.getSackStack();
         selectedStack = contents.copySelectedStack(previousSelectedStack);
         originalSelectedStack = selectedStack.copy();
     }
@@ -46,9 +47,9 @@ public class SackUsage {
      *
      * @param leftoverStackConsumer     handle leftover stack
      */
-    public void update(@NotNull Consumer<ItemStack> leftoverStackConsumer) {
+    public void update(@NotNull Entity entity, @NotNull Consumer<ItemStack> leftoverStackConsumer) {
         ItemStack leftoverStack = ItemStack.EMPTY;
-        SackContents contents = SackContents.of(sackStack);
+        SackContents contents = SackContents.of(sackStack, entity.getWorld());
         if (contents == null) {
             InventoryExpansion.LOGGER.warn("Contents of {} is invalid when updating usage!", sackStack);
             return;

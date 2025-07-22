@@ -1,6 +1,7 @@
 package derekahedron.invexp.mixin;
 
 import derekahedron.invexp.sack.SackContents;
+import derekahedron.invexp.sack.SackContentsReader;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.map.MapState;
 import org.jetbrains.annotations.NotNull;
@@ -32,7 +33,7 @@ public class MapStateMixin {
             if (predicate.test(other)) {
                 return true;
             }
-            SackContents contents = SackContents.of(other);
+            SackContentsReader contents = SackContents.of(other);
             if (contents != null && !contents.isEmpty()) {
                 for (ItemStack nestedStack : contents.getStacks()) {
                     if (predicate.test(nestedStack)) {

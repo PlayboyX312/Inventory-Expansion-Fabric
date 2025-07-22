@@ -1,12 +1,12 @@
 package derekahedron.invexp.item.tooltip;
 
-import derekahedron.invexp.quiver.QuiverContents;
+import derekahedron.invexp.quiver.QuiverContentsReader;
 import net.minecraft.item.tooltip.TooltipData;
 
 /**
- * Holds quiver tooltip data
+ * Holds quiver tooltip data.
  *
- * @param contents  Contents of the quiver
+ * @param contents Contents of the quiver
  */
-public record QuiverTooltipData(QuiverContents contents) implements TooltipData {
+public record QuiverTooltipData(QuiverContentsReader contents) implements TooltipData {
 }

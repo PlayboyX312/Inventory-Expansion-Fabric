@@ -1,6 +1,7 @@
 package derekahedron.invexp.mixin;
 
 import derekahedron.invexp.sack.SackContents;
+import derekahedron.invexp.sack.SackContentsReader;
 import derekahedron.invexp.sack.SackItemPredicate;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.advancement.criterion.InventoryChangedCriterion;
@@ -44,7 +45,7 @@ public class InventoryChangedCriterionConditionsMixin {
             index = 0
     )
     private ItemStack changeTestItem(ItemStack stack) {
-        SackContents contents = SackContents.of(stack);
+        SackContentsReader contents = SackContents.of(stack);
         if (contents != null && !contents.isEmpty()) {
             InventoryChangedCriterion.Conditions self = (InventoryChangedCriterion.Conditions) (Object) this;
             for (ItemStack nestedStack : contents.getStacks()) {

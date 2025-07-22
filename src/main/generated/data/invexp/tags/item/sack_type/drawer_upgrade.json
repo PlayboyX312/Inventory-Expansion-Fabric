@@ -1,0 +1,84 @@
+{
+  "values": [
+    {
+      "id": "storagedrawers:obsidian_storage_upgrade",
+      "required": false
+    },
+    {
+      "id": "storagedrawers:iron_storage_upgrade",
+      "required": false
+    },
+    {
+      "id": "storagedrawers:gold_storage_upgrade",
+      "required": false
+    },
+    {
+      "id": "storagedrawers:diamond_storage_upgrade",
+      "required": false
+    },
+    {
+      "id": "storagedrawers:emerald_storage_upgrade",
+      "required": false
+    },
+    {
+      "id": "storagedrawers:one_stack_upgrade",
+      "required": false
+    },
+    {
+      "id": "storagedrawers:void_upgrade",
+      "required": false
+    },
+    {
+      "id": "storagedrawers:creative_storage_upgrade",
+      "required": false
+    },
+    {
+      "id": "storagedrawers:creative_vending_upgrade",
+      "required": false
+    },
+    {
+      "id": "storagedrawers:conversion_upgrade",
+      "required": false
+    },
+    {
+      "id": "storagedrawers:redstone_upgrade",
+      "required": false
+    },
+    {
+      "id": "storagedrawers:min_redstone_upgrade",
+      "required": false
+    },
+    {
+      "id": "storagedrawers:max_redstone_upgrade",
+      "required": false
+    },
+    {
+      "id": "storagedrawers:illumination_upgrade",
+      "required": false
+    },
+    {
+      "id": "storagedrawers:fill_level_upgrade",
+      "required": false
+    },
+    {
+      "id": "storagedrawers:balance_fill_upgrade",
+      "required": false
+    },
+    {
+      "id": "storagedrawers:portability_upgrade",
+      "required": false
+    },
+    {
+      "id": "storagedrawers:remote_upgrade",
+      "required": false
+    },
+    {
+      "id": "storagedrawers:remote_group_upgrade",
+      "required": false
+    },
+    {
+      "id": "storagedrawers:upgrade_template",
+      "required": false
+    }
+  ]
+}

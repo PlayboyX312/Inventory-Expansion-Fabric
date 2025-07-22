@@ -1,9 +1,7 @@
 package derekahedron.invexp.util;
 
 import derekahedron.invexp.InventoryExpansion;
-import net.minecraft.component.DataComponentTypes;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
@@ -21,16 +19,6 @@ public class InvExpUtil {
      */
     public static @NotNull Identifier identifier(@NotNull String id) {
         return Identifier.of(InventoryExpansion.MOD_ID, id);
-    }
-
-    /**
-     * Helper for checking if an ItemStack has components that hide additional tooltips
-     *
-     * @param stack     stack to test
-     * @return          true if the stack can display tooltip; false otherwise
-     */
-    public static boolean shouldDisplayTooltip(@NotNull ItemStack stack) {
-        return !stack.contains(DataComponentTypes.HIDE_TOOLTIP) && !stack.contains(DataComponentTypes.HIDE_ADDITIONAL_TOOLTIP);
     }
 
     /**

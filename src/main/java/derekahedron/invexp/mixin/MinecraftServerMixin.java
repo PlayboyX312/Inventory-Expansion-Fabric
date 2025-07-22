@@ -1,7 +1,7 @@
 package derekahedron.invexp.mixin;
 
 import com.mojang.datafixers.DataFixer;
-import derekahedron.invexp.sack.SackInsertableManager;
+import derekahedron.invexp.sack.SackDefaultManager;
 import derekahedron.invexp.util.DataPackChangeDetector;
 import net.minecraft.resource.ResourcePackManager;
 import net.minecraft.server.MinecraftServer;
@@ -36,7 +36,7 @@ public class MinecraftServerMixin {
             WorldGenerationProgressListenerFactory worldGenerationProgressListenerFactory, @NotNull CallbackInfo ci
     ) {
         MinecraftServer self = (MinecraftServer) (Object) this;
-        SackInsertableManager.createNewInstance(self.getRegistryManager());
+        SackDefaultManager.createNewInstance(self.getRegistryManager());
         DataPackChangeDetector.markDirty();
     }
 
@@ -53,7 +53,7 @@ public class MinecraftServerMixin {
     private @NotNull Consumer<Object> detectDataPackReload(Consumer<Object> consumer) {
         return (var) -> {
             consumer.accept(var);
-            SackInsertableManager.updateInstanceTaggedInsertables();
+            SackDefaultManager.updateInstanceSackDefaults();
             DataPackChangeDetector.markDirty();
         };
     }

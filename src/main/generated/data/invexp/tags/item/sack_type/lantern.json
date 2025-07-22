@@ -1,0 +1,10 @@
+{
+  "values": [
+    "minecraft:lantern",
+    "minecraft:soul_lantern",
+    {
+      "id": "wilderwild:display_lantern",
+      "required": false
+    }
+  ]
+}

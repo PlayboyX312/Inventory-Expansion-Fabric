@@ -2,11 +2,12 @@ package derekahedron.invexp.render.item.property;
 
 import com.mojang.serialization.MapCodec;
 import derekahedron.invexp.sack.SackContents;
+import derekahedron.invexp.sack.SackContentsReader;
 import net.minecraft.client.render.item.property.bool.BooleanProperty;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ItemDisplayContext;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ModelTransformationMode;
 import org.jetbrains.annotations.Nullable;
 
 /**
@@ -19,11 +20,10 @@ public class SackHasContentsProperty implements BooleanProperty {
      * Returns true if the stack is a sack and has contents
      */
     @Override
-    public boolean getValue(
-            ItemStack sackStack, @Nullable ClientWorld world, @Nullable LivingEntity user,
-            int seed, ModelTransformationMode modelTransformationMode
-    ) {
-        SackContents contents = SackContents.of(sackStack);
+    public boolean test(
+            ItemStack stack, @Nullable ClientWorld world, @Nullable LivingEntity entity,
+            int seed, ItemDisplayContext displayContext) {
+        SackContentsReader contents = SackContents.of(stack);
         return contents != null && !contents.isEmpty();
     }
 

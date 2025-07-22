@@ -16,7 +16,7 @@ public class SackItemPredicate extends ItemPredicate {
      * @param predicate     predicate to copy from
      */
     public SackItemPredicate(@NotNull ItemPredicate predicate) {
-        super(predicate.items(), predicate.count(), predicate.components(), predicate.subPredicates());
+        super(predicate.items(), predicate.count(), predicate.components());
     }
 
     /**
@@ -27,11 +27,11 @@ public class SackItemPredicate extends ItemPredicate {
      * @return      true if the predicate matches the stack or any of its contents
      */
     @Override
-    public boolean test(ItemStack stack) {
+    public boolean test(@NotNull ItemStack stack) {
         if (super.test(stack)) {
             return true;
         }
-        SackContents contents = SackContents.of(stack);
+        SackContentsReader contents = SackContents.of(stack);
         if (contents != null && !contents.isEmpty()) {
             for (ItemStack nestedStack : contents.getStacks()) {
                 if (nestedStack.isEmpty() && super.test(nestedStack)) {

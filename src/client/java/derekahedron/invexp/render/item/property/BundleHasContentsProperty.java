@@ -6,8 +6,8 @@ import net.minecraft.client.world.ClientWorld;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.BundleContentsComponent;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ItemDisplayContext;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ModelTransformationMode;
 import org.jetbrains.annotations.Nullable;
 
 /**
@@ -22,11 +22,10 @@ public class BundleHasContentsProperty implements BooleanProperty {
      * Returns true if the stack is a bundle and has contents
      */
     @Override
-    public boolean getValue(
-            ItemStack bundleStack, @Nullable ClientWorld world, @Nullable LivingEntity user,
-            int seed, ModelTransformationMode modelTransformationMode
-    ) {
-        BundleContentsComponent contents = bundleStack.get(DataComponentTypes.BUNDLE_CONTENTS);
+    public boolean test(
+            ItemStack stack, @Nullable ClientWorld world, @Nullable LivingEntity entity,
+            int seed, ItemDisplayContext displayContext) {
+        BundleContentsComponent contents = stack.get(DataComponentTypes.BUNDLE_CONTENTS);
         return contents != null && !contents.isEmpty();
     }
 

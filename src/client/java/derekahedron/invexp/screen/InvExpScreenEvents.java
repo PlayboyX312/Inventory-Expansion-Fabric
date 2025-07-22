@@ -48,7 +48,7 @@ public class InvExpScreenEvents {
         ItemStack stack = slot.getStack();
 
         // Fail if contents are invalid
-        ContainerItemContents contents = ContainerItemContents.of(stack);
+        ContainerItemContents contents = ContainerItemContents.of(stack, handledScreen.client.player.getWorld());
         if (contents == null || contents.isEmpty()) {
             return true;
         }
@@ -87,8 +87,7 @@ public class InvExpScreenEvents {
             // Animate equip progress when changing stack
             if (handledScreen.client.player.getMainHandStack() == stack) {
                 handledScreen.client.gameRenderer.firstPersonRenderer.resetEquipProgress(Hand.MAIN_HAND);
-            }
-            else if (handledScreen.client.player.getOffHandStack() == stack) {
+            } else if (handledScreen.client.player.getOffHandStack() == stack) {
                 handledScreen.client.gameRenderer.firstPersonRenderer.resetEquipProgress(Hand.OFF_HAND);
             }
         }

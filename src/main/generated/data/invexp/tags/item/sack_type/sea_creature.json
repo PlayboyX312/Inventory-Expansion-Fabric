@@ -1,0 +1,21 @@
+{
+  "values": [
+    "minecraft:sea_pickle",
+    {
+      "id": "biomesoplenty:barnacles",
+      "required": false
+    },
+    {
+      "id": "wilderwild:barnacles",
+      "required": false
+    },
+    {
+      "id": "wilderwild:tube_worms",
+      "required": false
+    },
+    {
+      "id": "wilderwild:sea_anemone",
+      "required": false
+    }
+  ]
+}

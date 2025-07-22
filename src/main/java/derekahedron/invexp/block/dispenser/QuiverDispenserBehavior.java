@@ -7,21 +7,15 @@ import net.minecraft.block.dispenser.FallibleItemDispenserBehavior;
 import net.minecraft.block.dispenser.ProjectileDispenserBehavior;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPointer;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Dispenser Behavior for Quiver that allow sacks to dispense their selected arrow
  */
 public class QuiverDispenserBehavior extends FallibleItemDispenserBehavior {
 
-    /**
-     * Dispenser behavior for quivers
-     *
-     * @param pointer Pointer to the dispenser
-     * @param stack Quiver stack that is being dispensed
-     * @return Quiver stack after dispense
-     */
     @Override
-    public final ItemStack dispense(BlockPointer pointer, ItemStack stack) {
+    public final ItemStack dispense(@NotNull BlockPointer pointer, ItemStack stack) {
         QuiverContents contents = QuiverContents.of(stack);
         // Fail dispense if invalid or empty
         if (contents == null || contents.isEmpty()) {

@@ -4,8 +4,8 @@ import com.llamalad7.mixinextras.sugar.Local;
 import derekahedron.invexp.entity.player.PlayerEntityDuck;
 import derekahedron.invexp.quiver.QuiverContents;
 import derekahedron.invexp.sack.SackContents;
+import derekahedron.invexp.sack.SackContentsReader;
 import derekahedron.invexp.sack.SackUsage;
-import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
@@ -15,7 +15,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.ArrayList;
@@ -28,52 +27,6 @@ public abstract class PlayerEntityMixin implements PlayerEntityDuck {
     private @Unique SackUsage mainHandSackUsage;
     private @Unique SackUsage offHandSackUsage;
 
-    /**
-     * If the player is using a sack, getting the equipped stack should return the stack
-     * in usage if applicable.
-     */
-    @Inject(
-            method = "getEquippedStack",
-            at = @At("RETURN"),
-            cancellable = true
-    )
-    private void getEquippedStackInSack(EquipmentSlot slot, @NotNull CallbackInfoReturnable<ItemStack> cir) {
-        if (usingSack && (slot == EquipmentSlot.MAINHAND || slot == EquipmentSlot.OFFHAND)) {
-            SackUsage usage = invexp$getUsageForSackStack(cir.getReturnValue());
-            if (usage != null) {
-                cir.setReturnValue(usage.selectedStack);
-            }
-        }
-    }
-
-    /**
-     * If the player is using a sack, equipping the stack in that slot should set it to the
-     * selected stack in the sack usage if applicable.
-     */
-    @Inject(
-            method = "equipStack",
-            at = @At("HEAD"),
-            cancellable = true
-    )
-    private void equipStackInSack(EquipmentSlot slot, ItemStack stack, @NotNull CallbackInfo ci) {
-        if (usingSack && (slot == EquipmentSlot.MAINHAND || slot == EquipmentSlot.OFFHAND)) {
-            PlayerEntity self = (PlayerEntity) (Object) this;
-            // Get the stack that is being held
-            ItemStack heldStack;
-            switch (slot) {
-                case MAINHAND -> heldStack = self.getInventory().getMainHandStack();
-                case OFFHAND -> heldStack = self.getInventory().offHand.getFirst();
-                default -> throw new IllegalArgumentException("Invalid slot " + slot);
-            }
-            // If the stack in the slot is a sack being used, replace there instead
-            SackUsage usage = invexp$getUsageForSackStack(heldStack);
-            if (usage != null) {
-                self.onEquipStack(slot, usage.selectedStack, stack);
-                usage.selectedStack = stack;
-                ci.cancel();
-            }
-        }
-    }
 
     /**
      * Check if player is currently using sack.
@@ -99,7 +52,7 @@ public abstract class PlayerEntityMixin implements PlayerEntityDuck {
         SackUsage[] usages = new SackUsage[Hand.values().length];
         for (int i = 0; i < Hand.values().length; i++) {
             ItemStack heldStack = self.getStackInHand(Hand.values()[i]);
-            SackContents contents = SackContents.of(heldStack);
+            SackContentsReader contents = SackContents.of(heldStack);
             if (contents != null && !contents.isEmpty()) {
                 SackUsage usage = invexp$getUsageForSackStack(heldStack);
                 if (usage != null) {
@@ -132,7 +85,7 @@ public abstract class PlayerEntityMixin implements PlayerEntityDuck {
         for (Hand hand : Hand.values()) {
             SackUsage usage = getUsageByHand(hand);
             if (usage != null) {
-                usage.update(leftoverStacks::add);
+                usage.update(self, leftoverStacks::add);
             }
         }
 

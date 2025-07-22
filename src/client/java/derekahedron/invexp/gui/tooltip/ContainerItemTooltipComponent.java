@@ -246,7 +246,7 @@ public interface ContainerItemTooltipComponent {
                 // If stack is selected, render a highlight
                 if (stack == selectedStack) {
                     drawContext.drawGuiTexture(
-                            RenderLayer::getGuiTextured, getSlotHighlightFrontTexture(), slotX, slotY,
+                            RenderLayer::getGuiTexturedOverlay, getSlotHighlightFrontTexture(), slotX, slotY,
                             getSlotLength(), getSlotLength()
                     );
                 }

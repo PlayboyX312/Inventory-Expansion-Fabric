@@ -9,7 +9,7 @@ import net.minecraft.block.cauldron.CauldronBehavior;
 public class InvExpCauldronBehavior {
 
     /**
-     * Adds cauldron behaviors for modded items
+     * Adds cauldron behaviors for Inventory Expansion items
      */
     public static void initialize() {
         CauldronBehavior.WATER_CAULDRON_BEHAVIOR.map().put(InvExpItems.SACK, CauldronBehavior::cleanArmor);

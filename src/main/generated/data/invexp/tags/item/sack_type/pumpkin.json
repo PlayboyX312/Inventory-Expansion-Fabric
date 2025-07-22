@@ -1,0 +1,9 @@
+{
+  "values": [
+    "minecraft:pumpkin",
+    "minecraft:carved_pumpkin",
+    "minecraft:jack_o_lantern",
+    "#c:pumpkins",
+    "#c:crops/pumpkin"
+  ]
+}

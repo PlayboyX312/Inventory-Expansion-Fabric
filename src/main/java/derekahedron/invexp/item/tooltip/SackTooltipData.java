@@ -1,12 +1,12 @@
 package derekahedron.invexp.item.tooltip;
 
-import derekahedron.invexp.sack.SackContents;
+import derekahedron.invexp.sack.SackContentsReader;
 import net.minecraft.item.tooltip.TooltipData;
 
 /**
- * Holds sack tooltip data
+ * Holds sack tooltip data.
  *
- * @param contents  Contents of the sack
+ * @param contents Contents of the sack
  */
-public record SackTooltipData(SackContents contents) implements TooltipData {
+public record SackTooltipData(SackContentsReader contents) implements TooltipData {
 }

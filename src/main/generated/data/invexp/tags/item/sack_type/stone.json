@@ -1,0 +1,553 @@
+{
+  "values": [
+    "minecraft:stone",
+    "minecraft:stone_stairs",
+    "minecraft:stone_slab",
+    "minecraft:cobblestone",
+    "minecraft:cobblestone_stairs",
+    "minecraft:cobblestone_slab",
+    "minecraft:cobblestone_wall",
+    "minecraft:mossy_cobblestone",
+    "minecraft:mossy_cobblestone_stairs",
+    "minecraft:mossy_cobblestone_slab",
+    "minecraft:mossy_cobblestone_wall",
+    "minecraft:smooth_stone",
+    "minecraft:smooth_stone_slab",
+    "#minecraft:stone_bricks",
+    "minecraft:stone_brick_stairs",
+    "minecraft:stone_brick_slab",
+    "minecraft:stone_brick_wall",
+    "minecraft:mossy_stone_brick_stairs",
+    "minecraft:mossy_stone_brick_slab",
+    "minecraft:mossy_stone_brick_wall",
+    "minecraft:granite",
+    "minecraft:granite_stairs",
+    "minecraft:granite_slab",
+    "minecraft:granite_wall",
+    "minecraft:polished_granite",
+    "minecraft:polished_granite_stairs",
+    "minecraft:polished_granite_slab",
+    "minecraft:diorite",
+    "minecraft:diorite_stairs",
+    "minecraft:diorite_slab",
+    "minecraft:diorite_wall",
+    "minecraft:polished_diorite",
+    "minecraft:polished_diorite_stairs",
+    "minecraft:polished_diorite_slab",
+    "minecraft:andesite",
+    "minecraft:andesite_stairs",
+    "minecraft:andesite_slab",
+    "minecraft:andesite_wall",
+    "minecraft:polished_andesite",
+    "minecraft:polished_andesite_stairs",
+    "minecraft:polished_andesite_slab",
+    "minecraft:deepslate",
+    "minecraft:cobbled_deepslate",
+    "minecraft:cobbled_deepslate_stairs",
+    "minecraft:cobbled_deepslate_slab",
+    "minecraft:cobbled_deepslate_wall",
+    "minecraft:chiseled_deepslate",
+    "minecraft:polished_deepslate",
+    "minecraft:polished_deepslate_stairs",
+    "minecraft:polished_deepslate_slab",
+    "minecraft:polished_deepslate_wall",
+    "minecraft:deepslate_bricks",
+    "minecraft:cracked_deepslate_bricks",
+    "minecraft:deepslate_brick_stairs",
+    "minecraft:deepslate_brick_slab",
+    "minecraft:deepslate_brick_wall",
+    "minecraft:deepslate_tiles",
+    "minecraft:cracked_deepslate_tiles",
+    "minecraft:deepslate_tile_stairs",
+    "minecraft:deepslate_tile_slab",
+    "minecraft:deepslate_tile_wall",
+    "minecraft:reinforced_deepslate",
+    "minecraft:tuff",
+    "minecraft:tuff_stairs",
+    "minecraft:tuff_slab",
+    "minecraft:tuff_wall",
+    "minecraft:chiseled_tuff",
+    "minecraft:polished_tuff",
+    "minecraft:polished_tuff_stairs",
+    "minecraft:polished_tuff_slab",
+    "minecraft:polished_tuff_wall",
+    "minecraft:tuff_bricks",
+    "minecraft:tuff_brick_stairs",
+    "minecraft:tuff_brick_slab",
+    "minecraft:tuff_brick_wall",
+    "minecraft:chiseled_tuff_bricks",
+    "minecraft:netherrack",
+    "minecraft:basalt",
+    "minecraft:smooth_basalt",
+    "minecraft:polished_basalt",
+    "minecraft:blackstone",
+    "minecraft:gilded_blackstone",
+    "minecraft:blackstone_stairs",
+    "minecraft:blackstone_slab",
+    "minecraft:blackstone_wall",
+    "minecraft:chiseled_polished_blackstone",
+    "minecraft:polished_blackstone",
+    "minecraft:polished_blackstone_stairs",
+    "minecraft:polished_blackstone_slab",
+    "minecraft:polished_blackstone_wall",
+    "minecraft:polished_blackstone_bricks",
+    "minecraft:cracked_polished_blackstone_bricks",
+    "minecraft:polished_blackstone_brick_stairs",
+    "minecraft:polished_blackstone_brick_slab",
+    "minecraft:polished_blackstone_brick_wall",
+    "minecraft:end_stone",
+    "minecraft:end_stone_bricks",
+    "minecraft:end_stone_brick_stairs",
+    "minecraft:end_stone_brick_slab",
+    "minecraft:end_stone_brick_wall",
+    "minecraft:calcite",
+    "minecraft:dripstone_block",
+    "minecraft:pointed_dripstone",
+    "minecraft:magma_block",
+    "minecraft:obsidian",
+    "minecraft:crying_obsidian",
+    "minecraft:crimson_nylium",
+    "minecraft:warped_nylium",
+    "#c:stones",
+    "#c:cobblestones",
+    "#c:netherracks",
+    "#c:end_stones",
+    "#c:obsidians",
+    {
+      "id": "biomesoplenty:thermal_calcite",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:thermal_calcite_vent",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:brimstone",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:brimstone_bricks",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:brimstone_brick_slab",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:brimstone_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:brimstone_brick_wall",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:chiseled_brimstone_bricks",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:brimstone_fumarole",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:brimstone_cluster",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:brimstone_bud",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:blackstone_spines",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:blackstone_bulb",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:algal_end_stone",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:unmapped_end_stone",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:null_end_stone",
+      "required": false
+    },
+    {
+      "id": "trailiertales:granite_bricks",
+      "required": false
+    },
+    {
+      "id": "trailiertales:cracked_granite_bricks",
+      "required": false
+    },
+    {
+      "id": "trailiertales:granite_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "trailiertales:granite_brick_slab",
+      "required": false
+    },
+    {
+      "id": "trailiertales:granite_brick_wall",
+      "required": false
+    },
+    {
+      "id": "trailiertales:chiseled_granite_bricks",
+      "required": false
+    },
+    {
+      "id": "trailiertales:mossy_granite_bricks",
+      "required": false
+    },
+    {
+      "id": "trailiertales:mossy_granite_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "trailiertales:mossy_granite_brick_slab",
+      "required": false
+    },
+    {
+      "id": "trailiertales:mossy_granite_brick_wall",
+      "required": false
+    },
+    {
+      "id": "trailiertales:polished_granite_wall",
+      "required": false
+    },
+    {
+      "id": "trailiertales:diorite_bricks",
+      "required": false
+    },
+    {
+      "id": "trailiertales:cracked_diorite_bricks",
+      "required": false
+    },
+    {
+      "id": "trailiertales:diorite_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "trailiertales:diorite_brick_slab",
+      "required": false
+    },
+    {
+      "id": "trailiertales:diorite_brick_wall",
+      "required": false
+    },
+    {
+      "id": "trailiertales:chiseled_diorite_bricks",
+      "required": false
+    },
+    {
+      "id": "trailiertales:mossy_diorite_bricks",
+      "required": false
+    },
+    {
+      "id": "trailiertales:mossy_diorite_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "trailiertales:mossy_diorite_brick_slab",
+      "required": false
+    },
+    {
+      "id": "trailiertales:mossy_diorite_brick_wall",
+      "required": false
+    },
+    {
+      "id": "trailiertales:polished_diorite_wall",
+      "required": false
+    },
+    {
+      "id": "trailiertales:andesite_bricks",
+      "required": false
+    },
+    {
+      "id": "trailiertales:cracked_andesite_bricks",
+      "required": false
+    },
+    {
+      "id": "trailiertales:andesite_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "trailiertales:andesite_brick_slab",
+      "required": false
+    },
+    {
+      "id": "trailiertales:andesite_brick_wall",
+      "required": false
+    },
+    {
+      "id": "trailiertales:chiseled_andesite_bricks",
+      "required": false
+    },
+    {
+      "id": "trailiertales:mossy_andesite_bricks",
+      "required": false
+    },
+    {
+      "id": "trailiertales:mossy_andesite_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "trailiertales:mossy_andesite_brick_slab",
+      "required": false
+    },
+    {
+      "id": "trailiertales:mossy_andesite_brick_wall",
+      "required": false
+    },
+    {
+      "id": "trailiertales:polished_andesite_wall",
+      "required": false
+    },
+    {
+      "id": "trailiertales:calcite_stairs",
+      "required": false
+    },
+    {
+      "id": "trailiertales:calcite_slab",
+      "required": false
+    },
+    {
+      "id": "trailiertales:calcite_wall",
+      "required": false
+    },
+    {
+      "id": "trailiertales:polished_calcite",
+      "required": false
+    },
+    {
+      "id": "trailiertales:polished_calcite_stairs",
+      "required": false
+    },
+    {
+      "id": "trailiertales:polished_calcite_slab",
+      "required": false
+    },
+    {
+      "id": "trailiertales:polished_calcite_wall",
+      "required": false
+    },
+    {
+      "id": "trailiertales:calcite_bricks",
+      "required": false
+    },
+    {
+      "id": "trailiertales:cracked_calcite_bricks",
+      "required": false
+    },
+    {
+      "id": "trailiertales:calcite_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "trailiertales:calcite_brick_slab",
+      "required": false
+    },
+    {
+      "id": "trailiertales:calcite_brick_wall",
+      "required": false
+    },
+    {
+      "id": "trailiertales:chiseled_calcite_bricks",
+      "required": false
+    },
+    {
+      "id": "trailiertales:mossy_calcite_bricks",
+      "required": false
+    },
+    {
+      "id": "trailiertales:mossy_calcite_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "trailiertales:mossy_calcite_brick_slab",
+      "required": false
+    },
+    {
+      "id": "trailiertales:mossy_calcite_brick_wall",
+      "required": false
+    },
+    {
+      "id": "trailiertales:mossy_cobbled_deepslate",
+      "required": false
+    },
+    {
+      "id": "trailiertales:mossy_cobbled_deepslate_stairs",
+      "required": false
+    },
+    {
+      "id": "trailiertales:mossy_cobbled_deepslate_slab",
+      "required": false
+    },
+    {
+      "id": "trailiertales:mossy_cobbled_deepslate_wall",
+      "required": false
+    },
+    {
+      "id": "trailiertales:mossy_deepslate_bricks",
+      "required": false
+    },
+    {
+      "id": "trailiertales:mossy_deepslate_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "trailiertales:mossy_deepslate_brick_slab",
+      "required": false
+    },
+    {
+      "id": "trailiertales:mossy_deepslate_brick_wall",
+      "required": false
+    },
+    {
+      "id": "trailiertales:mossy_deepslate_tiles",
+      "required": false
+    },
+    {
+      "id": "trailiertales:mossy_deepslate_tile_stairs",
+      "required": false
+    },
+    {
+      "id": "trailiertales:mossy_deepslate_tile_slab",
+      "required": false
+    },
+    {
+      "id": "trailiertales:mossy_deepslate_tile_wall",
+      "required": false
+    },
+    {
+      "id": "trailiertales:cracked_tuff_bricks",
+      "required": false
+    },
+    {
+      "id": "trailiertales:mossy_tuff_bricks",
+      "required": false
+    },
+    {
+      "id": "trailiertales:mossy_tuff_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "trailiertales:mossy_tuff_brick_slab",
+      "required": false
+    },
+    {
+      "id": "trailiertales:mossy_tuff_brick_wall",
+      "required": false
+    },
+    {
+      "id": "trailiertales:end_stone_stairs",
+      "required": false
+    },
+    {
+      "id": "trailiertales:end_stone_slab",
+      "required": false
+    },
+    {
+      "id": "trailiertales:end_stone_wall",
+      "required": false
+    },
+    {
+      "id": "trailiertales:choral_end_stone",
+      "required": false
+    },
+    {
+      "id": "trailiertales:choral_end_stone_stairs",
+      "required": false
+    },
+    {
+      "id": "trailiertales:choral_end_stone_slab",
+      "required": false
+    },
+    {
+      "id": "trailiertales:choral_end_stone_wall",
+      "required": false
+    },
+    {
+      "id": "trailiertales:cracked_end_stone_bricks",
+      "required": false
+    },
+    {
+      "id": "trailiertales:chiseled_end_stone_bricks",
+      "required": false
+    },
+    {
+      "id": "trailiertales:choral_end_stone_bricks",
+      "required": false
+    },
+    {
+      "id": "trailiertales:choral_end_stone_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "trailiertales:choral_end_stone_brick_slab",
+      "required": false
+    },
+    {
+      "id": "trailiertales:choral_end_stone_brick_wall",
+      "required": false
+    },
+    {
+      "id": "wilderwild:gabbro",
+      "required": false
+    },
+    {
+      "id": "wilderwild:polished_gabbro",
+      "required": false
+    },
+    {
+      "id": "wilderwild:polished_gabbro_stairs",
+      "required": false
+    },
+    {
+      "id": "wilderwild:polished_gabbro_slab",
+      "required": false
+    },
+    {
+      "id": "wilderwild:polished_gabbro_wall",
+      "required": false
+    },
+    {
+      "id": "wilderwild:gabbro_bricks",
+      "required": false
+    },
+    {
+      "id": "wilderwild:cracked_gabbro_bricks",
+      "required": false
+    },
+    {
+      "id": "wilderwild:gabbro_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "wilderwild:gabbro_brick_slab",
+      "required": false
+    },
+    {
+      "id": "wilderwild:gabbro_brick_wall",
+      "required": false
+    },
+    {
+      "id": "wilderwild:chiseled_gabbro_bricks",
+      "required": false
+    },
+    {
+      "id": "wilderwild:geyser",
+      "required": false
+    },
+    {
+      "id": "wilderwild:stone_chest",
+      "required": false
+    }
+  ]
+}

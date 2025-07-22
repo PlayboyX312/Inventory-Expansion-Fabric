@@ -1,0 +1,13 @@
+{
+  "items": "minecraft:potion",
+  "predicate": {
+    "predicates": {
+      "minecraft:potion_contents": "minecraft:water"
+    }
+  },
+  "priority": 10,
+  "sack_weight": {
+    "denominator": 4,
+    "numerator": 1
+  }
+}

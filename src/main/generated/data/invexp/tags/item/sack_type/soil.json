@@ -1,0 +1,42 @@
+{
+  "values": [
+    "minecraft:packed_mud",
+    "#minecraft:dirt",
+    "minecraft:dirt_path",
+    "minecraft:farmland",
+    "minecraft:clay",
+    "minecraft:gravel",
+    "#minecraft:sand",
+    "minecraft:soul_sand",
+    "minecraft:soul_soil",
+    "minecraft:suspicious_sand",
+    "minecraft:suspicious_gravel",
+    "minecraft:clay_ball",
+    "#c:gravels",
+    "#c:sands",
+    {
+      "id": "biomesoplenty:dried_salt",
+      "required": false
+    },
+    {
+      "id": "trailiertales:suspicious_red_sand",
+      "required": false
+    },
+    {
+      "id": "trailiertales:suspicious_dirt",
+      "required": false
+    },
+    {
+      "id": "trailiertales:suspicious_clay",
+      "required": false
+    },
+    {
+      "id": "wilderwild:scorched_sand",
+      "required": false
+    },
+    {
+      "id": "wilderwild:scorched_red_sand",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "items": "#invexp:sack_type/infested_stone",
+  "priority": 10,
+  "sack_type": "invexp:infested_stone"
+}

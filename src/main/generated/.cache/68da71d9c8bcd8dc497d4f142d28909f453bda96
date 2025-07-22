@@ -1,0 +1,7 @@
+// 1.21.5	-999999999-01-01T00:00:00	Inventory Expansion/Inventory Expansion Sack Weight Defaults
+dece5ad5b31dcd90a2a758e8547ee9ea836bd2e9 data/invexp/invexp/sack_weight_default/double.json
+a446fb1a4c7e0f42e9b4c17fc5309621eb4645a8 data/invexp/invexp/sack_weight_default/fifth.json
+24b5780683be7c376cc8014d596832cb2426499c data/invexp/invexp/sack_weight_default/fourth.json
+3f3db38dbcb4eb8b422856d2a83f40b132bcf952 data/invexp/invexp/sack_weight_default/half.json
+c62ff24c3b3b381319ecd27178fbdc96b4970891 data/invexp/invexp/sack_weight_default/third.json
+a272e041f5a1d51ddda78951eb9e943229f07619 data/invexp/invexp/sack_weight_default/water_bottle.json

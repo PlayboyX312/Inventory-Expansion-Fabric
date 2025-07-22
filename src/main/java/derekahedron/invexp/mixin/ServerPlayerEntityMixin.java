@@ -1,6 +1,7 @@
 package derekahedron.invexp.mixin;
 
 import derekahedron.invexp.sack.SackContents;
+import derekahedron.invexp.sack.SackContentsReader;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -22,7 +23,7 @@ public class ServerPlayerEntityMixin {
             at = @At("HEAD")
     )
     private void sendMapPacketToSackContents(ItemStack stack, @NotNull CallbackInfo ci) {
-        SackContents contents = SackContents.of(stack);
+        SackContentsReader contents = SackContents.of(stack);
         if (contents != null && !contents.isEmpty()) {
             ServerPlayerEntity self = (ServerPlayerEntity) (Object) this;
             for (ItemStack nestedStack : contents.getStacks()) {

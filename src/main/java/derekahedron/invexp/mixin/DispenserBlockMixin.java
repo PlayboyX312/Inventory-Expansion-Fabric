@@ -1,6 +1,7 @@
 package derekahedron.invexp.mixin;
 
 import derekahedron.invexp.util.ContainerItemContents;
+import derekahedron.invexp.util.ContainerItemContentsReader;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.block.entity.BlockEntityType;
@@ -32,7 +33,7 @@ public class DispenserBlockMixin {
         }
         DispenserBlockEntity dispenser = world.getBlockEntity(pos, BlockEntityType.DISPENSER).orElse(null);
         if (dispenser != null) {
-            ContainerItemContents contents = ContainerItemContents.of(dispenser.getStack(slot));
+            ContainerItemContentsReader contents = ContainerItemContents.of(dispenser.getStack(slot));
             // Only recalculate if the selected item has contents but is not empty
             if (contents != null && contents.isEmpty()) {
                 slot = -1;
